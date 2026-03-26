@@ -3,6 +3,11 @@ name: Build and deploy
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 env:
   SOURCE_BRANCH: refs/heads/source
 
@@ -15,8 +20,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
       - name: Build assets
-        run: npm install && npm run build
+        run: npm run build
 
       - name: Generate
         run: docker run --rm -v $(pwd):/app viktoras25/sculpin:latest generate --env=live

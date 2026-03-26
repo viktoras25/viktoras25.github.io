@@ -25,6 +25,24 @@
   body {
     font-size: 12px;
   }
+
+  .container-lg {
+    height: calc(2 * 297mm);
+  }
+
+  .row {
+    height: 100%;
+    display: flex;
+  }
+
+  #cv-sidebar {
+    height: 100%;
+  }
+
+  #cv-main {
+    height: 100%;
+    overflow: hidden;
+  }
 }
 
 .hide-md {
