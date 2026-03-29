@@ -2,7 +2,7 @@ build:
 	npm run build
 
 serve:
-	docker run --rm -it --init -p8000:8000 -v `pwd`:/app viktoras25/sculpin generate --watch --server --env=live
+	container run --rm -it --init -p 8000:8000 -v `pwd`:/app viktoras25/sculpin:3.3.0-alpha4 generate --watch --server --env=live
 
 clean:
 	rm -rf output_live
