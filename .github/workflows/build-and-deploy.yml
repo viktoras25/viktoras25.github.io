@@ -2,6 +2,10 @@ name: Build and deploy
 
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: ["CI - Build, Serve & Test"]
+    types: [completed]
+    branches: [source]
 
 permissions:
   contents: write
@@ -15,6 +19,7 @@ jobs:
   deploy:
     name: Deploy website
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
 
     steps:
       - name: Checkout

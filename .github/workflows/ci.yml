@@ -1,0 +1,60 @@
+name: CI - Build, Serve & Test
+
+on:
+  push:
+    branches: [ source, main ]
+  pull_request:
+    branches: [ source, main ]
+
+jobs:
+  build-and-test:
+    name: Build, Serve & Test Website
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Build assets
+        run: npm run build
+
+      - name: Build and serve with Sculpin
+        run: |
+          docker run --rm --init -p 8000:8000 -v $(pwd):/app viktoras25/sculpin:latest generate --watch --server --env=live > /tmp/server.log 2>&1 &
+          echo $! > /tmp/server.pid
+          sleep 3
+          # Verify server is running
+          curl -f http://localhost:8000/ > /dev/null || (cat /tmp/server.log && exit 1)
+
+      - name: Test home page content
+        run: |
+          echo "Testing home page..."
+          HOME_PAGE=$(curl -s http://localhost:8000/)
+          
+          echo "$HOME_PAGE" | grep -q "Viktoras Bezaras" || (echo "ERROR: Home page content missing" && exit 1)
+          echo "✓ Home page OK"
+
+      - name: Test CV page content
+        run: |
+          echo "Testing CV page..."
+          CV_PAGE=$(curl -s http://localhost:8000/cv/)
+          
+          echo "$CV_PAGE" | grep -q "BEZARAS" || (echo "ERROR: CV page content missing" && exit 1)
+          echo "$CV_PAGE" | grep -q "Head of development @ LeasingMarkt" || (echo "ERROR: CV experience missing" && exit 1)
+          echo "✓ CV page OK"
+
+
+      - name: Stop HTTP server
+        if: always()
+        run: |
+          if [ -f /tmp/server.pid ]; then
+            kill $(cat /tmp/server.pid) 2>/dev/null || true
+            wait $(cat /tmp/server.pid) 2>/dev/null || true
+          fi
+
