@@ -10,7 +10,6 @@
   "author": "Viktoras Bezaras",
   "license": "ISC",
   "scripts": {
-    "build-mix": "mix build",
     "dev": "vite build --watch",
     "build": "vite build",
     "serve": "container run --rm -it --init -p 8000:8000 -v `pwd`:/app viktoras25/sculpin:3.3.0-alpha4 generate --watch --server --env=live",

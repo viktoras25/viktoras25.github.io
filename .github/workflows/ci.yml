@@ -22,7 +22,7 @@ jobs:
           cache: npm
 
       - name: Build assets
-        run: npm run build
+        run: npm install && npm run build
 
       - name: Build and serve with Sculpin
         run: |
