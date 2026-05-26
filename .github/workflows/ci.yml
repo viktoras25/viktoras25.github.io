@@ -28,7 +28,7 @@ jobs:
         run: |
           docker run --rm --init -p 8000:8000 -v $(pwd):/app --user $(id -u):$(id -g) viktoras25/sculpin:3.3.0-alpha4 generate --watch --server --env=live > /tmp/server.log 2>&1 &
           echo $! > /tmp/server.pid
-          sleep 3
+          sleep 10
           # Verify server is running
           curl -f http://localhost:8000/ > /dev/null || (cat /tmp/server.log && exit 1)
 
