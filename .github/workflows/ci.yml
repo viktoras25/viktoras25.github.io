@@ -26,7 +26,7 @@ jobs:
 
       - name: Build and serve with Sculpin
         run: |
-          docker run --rm --init -p 8000:8000 -v $(pwd):/app viktoras25/sculpin:3.3.0-alpha4 generate --watch --server --env=live > /tmp/server.log 2>&1 &
+          docker run --rm --init -p 8000:8000 -v $(pwd):/app --user $(id -u):$(id -g) viktoras25/sculpin:3.3.0-alpha4 generate --watch --server --env=live > /tmp/server.log 2>&1 &
           echo $! > /tmp/server.pid
           sleep 3
           # Verify server is running
