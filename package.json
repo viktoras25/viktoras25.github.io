@@ -2,7 +2,7 @@
   "name": "viktoras.de",
   "version": "1.0.0",
   "description": "Asset builder",
-  "main": "webpack.mix.js",
+  "main": "vite.config.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://github.com/viktoras25/viktoras25.github.io.git"
@@ -10,16 +10,18 @@
   "author": "Viktoras Bezaras",
   "license": "ISC",
   "scripts": {
-    "build": "npm install && mix --production",
-    "watch": "npm install && mix watch"
+    "build-mix": "mix build",
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "serve": "container run --rm -it --init -p 8000:8000 -v `pwd`:/app viktoras25/sculpin:3.3.0-alpha4 generate --watch --server --env=live",
+    "clean": "rm -rf ./output_live"
   },
   "devDependencies": {
     "bootstrap": "5.3",
     "bootstrap-icons": "^1.11.3",
     "highlight.js": "^11.10",
-    "laravel-mix": "^6.0",
-    "resolve-url-loader": "^5.0",
-    "sass": "^1.100",
-    "sass-loader": "^17"
+    "sass": "^1.100.0",
+    "sass-loader": "^17",
+    "vite": "^8.0.14"
   }
 }

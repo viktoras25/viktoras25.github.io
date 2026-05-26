@@ -1,6 +1,6 @@
-@import "./bootstrap";
-@import "highlight.js/styles/github.css";
-@import "bootstrap-icons";
+@use "./bootstrap";
+@use "highlight.js/styles/github.css";
+@use "bootstrap-icons";
 
 @page {
   size: A4;
