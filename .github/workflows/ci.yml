@@ -46,7 +46,7 @@ jobs:
           CV_PAGE=$(curl -s http://localhost:8000/cv/)
           
           echo "$CV_PAGE" | grep -q "BEZARAS" || (echo "ERROR: CV page content missing" && exit 1)
-          echo "$CV_PAGE" | grep -q "Head of development @ LeasingMarkt" || (echo "ERROR: CV experience missing" && exit 1)
+          echo "$CV_PAGE" | grep -q "Head of development @ AutoScout24" || (echo "ERROR: CV experience missing" && exit 1)
           echo "✓ CV page OK"
 
 
