@@ -1,8 +1,8 @@
 User-agent: *
-Disallow: /blog/tags/
-Disallow: /blog/categories/
+Disallow: /read/
 Disallow: /impressum/
-Disallow: /cv/
+Disallow: /datenschutz/
 Disallow: /lebenslauf/
+Disallow: /cv-classic/
 
 Sitemap: https://viktoras.de/sitemap.xml
