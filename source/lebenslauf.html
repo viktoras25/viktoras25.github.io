@@ -1,13 +1,12 @@
 ---
 layout: resume
-title: Lebenslauf
+title: Viktoras Bezaras · Lebenslauf
+lang: de
 ---
 
 {% block head_styles %}
 {{ parent() }}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link href="/css/cv-fonts.css" rel="stylesheet">
 <style>
   /* Colors */
   :root {
@@ -96,6 +95,18 @@ title: Lebenslauf
   /* Photo */
   .cv2-photo-wrap { width: 147px; height: 130px; overflow: hidden; position: absolute; top: 32px; right: 54px; }
   .cv2-photo      { width: 100%; height: 100%; object-fit: cover; object-position: center 0; }
+
+  /* Small screens */
+  @media screen and (max-width: 840px) {
+    .cv2-stack      { padding: 0; gap: 12px; }
+    .cv2-pg         { width: 100%; min-height: 0; box-shadow: none; }
+    .cv2-inner      { padding: 28px 20px; }
+    .cv2-photo-wrap { position: static; width: 110px; height: 97px; margin-bottom: 18px; }
+    .cv2-name       { font-size: 36px; }
+    .cv2-profile    { font-size: 16.5px; }
+    .cv2-row        { flex-wrap: wrap; gap: 2px 14px; }
+    .cv2-lang-list  { flex-wrap: wrap; gap: 8px 24px; }
+  }
 
   /* Print */
   @page { size: A4; margin: 0; }

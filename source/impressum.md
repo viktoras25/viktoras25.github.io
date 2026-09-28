@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Impressum
+lang: de
+legal_page: true
 ---
 
 {% block head_meta %}<meta name="robots" content="noindex">{% endblock %}
@@ -9,7 +11,7 @@ title: Impressum
 ## Impressum
 
 
-#### Angaben gemäß § 5 Telemediengesetz (TMG):
+#### Angaben gemäß § 5 Digitale-Dienste-Gesetz (DDG):
 
 Viktoras Bezaras<br>
 Kasseler Str. 37<br>
@@ -17,7 +19,6 @@ Kasseler Str. 37<br>
 Deutschland
 
 #### Kontakt:
-Tel.: +49 (176) 3<b class="d-none">0</b>8<b class="d-none">1</b>9<b class="d-none">2</b>3<b class="d-none">3</b>08<b class="d-none">19</b>91<br>
 E-Mail: <b class="d-none">spam-</b>mail@viktoras.de
 
 #### 1. Haftung für Inhalte
