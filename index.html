@@ -95,6 +95,25 @@
         margin: 0 5px;
     }
 
+    div.social-icons i.bi-at {
+        position: relative;
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        border: 2px solid currentColor;
+        border-radius: 50%;
+        vertical-align: -0.125em;
+    }
+
+    div.social-icons i.bi-at::before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 0.7em;
+        -webkit-text-stroke: 0.035em currentColor;
+    }
+
     .navbar a {
         text-decoration: none !important;
     }
@@ -151,22 +170,29 @@
 
                         <h5>Engineering Manager at LeasingMarkt.de</h5>
 
-                        <ul>
-                            <li>18 years of software development</li>
-                            <li>7 years of engineering management</li>
-                            <li>2 years of AI development</li>
-                        </ul>
+                                                                        <ul>
+                                                                                                                            <li><span class="js-years" data-year="2008" data-month="7" data-round="down">18 years</span> of software development</li>
+                                                                                                                            <li><span class="js-years" data-year="2019" data-month="7" data-round="down">7 years</span> of engineering management</li>
+                                                                                                                            <li><span class="js-years" data-year="2025" data-month="8" data-round="up">2 years</span> of AI development</li>
+                                                    </ul>
 
                         <div class="social-icons">
                             <a href="https://github.com/viktoras25" title="GitHub"><i class="bi-github"></i></a>
                             <a href="https://www.linkedin.com/in/vkts" title="LinkedIn"><i class="bi-linkedin"></i></a>
                             <a href="https://t.me/viktoras" title="Telegram"><i class="bi-telegram"></i></a>
-                            <a href="#" class="js-mail" data-user="mail" data-domain="viktoras.de" title="Email"><i class="bi-envelope"></i></a>
-                            <a href="/cv" title="CV"><i class="bi-person-vcard"></i></a>
+                            <a href="#" class="js-mail" data-user="viktoras.bezaras" data-domain="gmail.com" title="Email"><i class="bi-at"></i></a>
+                            <a href="/cv" title="CV"><i class="bi-person-circle"></i></a>
                         </div>
                         <script>
                             document.querySelectorAll('.js-mail').forEach(function (a) {
                                 a.href = 'mailto:' + a.dataset.user + '@' + a.dataset.domain;
+                            });
+
+                            var now = new Date(), nowMonths = now.getFullYear() * 12 + now.getMonth() + 1;
+                            document.querySelectorAll('.js-years').forEach(function (el) {
+                                var months = nowMonths - (el.dataset.year * 12 + +el.dataset.month);
+                                var years = el.dataset.round === 'up' ? Math.ceil(months / 12) : Math.floor(months / 12);
+                                el.textContent = years + (years === 1 ? ' year' : ' years');
                             });
                         </script>
                     </div>
