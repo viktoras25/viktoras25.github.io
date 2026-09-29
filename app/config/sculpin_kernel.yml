@@ -1,8 +1,0 @@
-sculpin_content_types:
-    old_posts:
-        enabled: false
-        permalink: blog/:filename/
-        path: posts/
-    posts:
-        permalink: read/:filename/
-        path: event/

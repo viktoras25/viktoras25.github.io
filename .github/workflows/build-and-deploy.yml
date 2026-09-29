@@ -34,13 +34,22 @@ jobs:
       - name: Build assets
         run: npm ci && npm run build
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          tools: composer
+
+      - name: Install PHP dependencies
+        run: composer install --no-dev --prefer-dist --no-progress
+
       - name: Generate
-        run: docker run --rm -v $(pwd):/app viktoras25/sculpin:latest generate --env=live
+        run: vendor/bin/jigsaw build production
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         if: ${{ github.ref == env.SOURCE_BRANCH }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./output_live
+          publish_dir: ./build_production
           cname: viktoras.de

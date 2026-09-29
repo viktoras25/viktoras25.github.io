@@ -24,11 +24,21 @@ jobs:
       - name: Build assets
         run: npm install && npm run build
 
-      - name: Build and serve with Sculpin
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          tools: composer
+
+      - name: Install PHP dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Build and serve with Jigsaw
         run: |
-          docker run --rm --init -p 8000:8000 -v $(pwd):/app --user $(id -u):$(id -g) viktoras25/sculpin:3.3.0-alpha4 generate --watch --server --env=live > /tmp/server.log 2>&1 &
+          vendor/bin/jigsaw build production
+          php -S localhost:8000 -t build_production > /tmp/server.log 2>&1 &
           echo $! > /tmp/server.pid
-          sleep 10
+          sleep 3
           # Verify server is running
           curl -f http://localhost:8000/ > /dev/null || (cat /tmp/server.log && exit 1)
 

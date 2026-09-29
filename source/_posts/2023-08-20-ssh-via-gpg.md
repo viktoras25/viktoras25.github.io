@@ -1,4 +1,6 @@
 ---
+extends: _layouts.post
+section: content
 title: "SSH via GPG"
 tags: [ssh, gpg]
 categories: []

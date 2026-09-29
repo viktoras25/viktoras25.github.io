@@ -1,17 +1,17 @@
 ---
 permalink: sitemap.xml
 ---
-<?xml version="1.0" encoding="UTF-8"?>
+{!! '<?xml version="1.0" encoding="UTF-8"?>' !!}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>{{ site.url }}</loc>
-    <lastmod>{{ site.calculated_date | date('Y-m-d') }}</lastmod>
+    <loc>{{ $page->siteUrl }}</loc>
+    <lastmod>{{ date('Y-m-d') }}</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>{{ site.url }}/cv/</loc>
-    <lastmod>{{ site.calculated_date | date('Y-m-d') }}</lastmod>
+    <loc>{{ $page->siteUrl }}/cv/</loc>
+    <lastmod>{{ date('Y-m-d') }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

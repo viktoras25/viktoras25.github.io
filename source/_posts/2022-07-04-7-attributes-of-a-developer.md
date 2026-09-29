@@ -1,4 +1,6 @@
 ---
+extends: _layouts.post
+section: content
 title: 7 attributes of a developer
 description: A role-playing approach to developer feedback.
 tags: [management]

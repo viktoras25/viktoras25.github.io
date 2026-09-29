@@ -1,4 +1,6 @@
 ---
+extends: _layouts.post
+section: content
 title: Segments intersection algortihm
 tags: []
 categories: [golang]

@@ -1,13 +1,11 @@
 ---
-layout: default
 title: Datenschutzerklärung
 lang: de
 legal_page: true
+extends: _layouts.legal
+section: content
 ---
 
-{% block head_meta %}<meta name="robots" content="noindex">{% endblock %}
-
-{% block posts %}
 ## Datenschutzerklärung
 
 #### 1. Verantwortlicher
@@ -49,4 +47,3 @@ Diese Website enthält Links zu GitHub, LinkedIn und Telegram. Erst wenn Sie ein
 Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO), Datenübertragbarkeit (Art. 20 DSGVO) sowie auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO). Wenden Sie sich dazu einfach an die oben genannte E-Mail-Adresse.
 
 Außerdem haben Sie das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren (Art. 77 DSGVO). Zuständig ist die Sächsische Datenschutz- und Transparenzbeauftragte.
-{% endblock %}

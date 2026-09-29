@@ -1,8 +1,6 @@
-{% extends "blank" %}
+@extends('_layouts.master')
 
-{% block title %}{{ page.title }}{% endblock %}
-
-{% block head_styles %}
+@section('head_styles')
     <style>
         @media print {
             body {
@@ -19,4 +17,4 @@
             font-size: 16px;
         }
     </style>
-{% endblock %}
+@endsection

@@ -1,11 +1,11 @@
 ---
-layout: default
-permalink: /404.html
+permalink: 404.html
 title: Page not found
 ---
+@extends('_layouts.default')
 
-{% block posts %}
+@section('posts')
 <div class="text-center">
     <h2>Page not found</h2>
 </div>
-{% endblock %}
+@endsection

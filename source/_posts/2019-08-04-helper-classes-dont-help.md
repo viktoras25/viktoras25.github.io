@@ -1,4 +1,6 @@
 ---
+extends: _layouts.post
+section: content
 title: Helper classes don't help
 tags: []
 categories: [php]

@@ -1,21 +1,23 @@
 ---
-layout: resume
 title: Viktoras Bezaras · Résumé
 ---
+@extends('_layouts.resume')
 
-{% block head_styles %}
-{{ parent() }}
+@section('title', $page->title)
+
+@section('head_styles')
+@parent
 <link rel="stylesheet" href="/vendor/fontawesome/css/all.min.css">
-{% endblock %}
+@endsection
 
-{% block contents %}
+@section('contents')
 <div class="container-lg">
     <div class="row">
         <div id="cv-sidebar" class="col-sm-3">
             <div id="cv-photo-container">
                 <picture>
-                    <source srcSet="{{site.url}}/img/viktoras_3.avif" type="image/avif" />
-                    <img src="{{site.url}}/img/viktoras_3.jpg" decoding="async" loading="lazy" id="cv-photo" alt="☺"/>
+                    <source srcSet="/img/viktoras_3.avif" type="image/avif" />
+                    <img src="/img/viktoras_3.jpg" decoding="async" loading="lazy" id="cv-photo" alt="☺"/>
                 </picture>
             </div>
 
@@ -247,4 +249,4 @@ title: Viktoras Bezaras · Résumé
         </div>
     </div>
 </div>
-{% endblock %}
+@endsection

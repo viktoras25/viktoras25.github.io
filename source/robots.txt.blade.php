@@ -1,7 +1,6 @@
 ---
-permalink: none
+permalink: robots.txt
 ---
-
 User-agent: *
 Disallow: /read/
 Disallow: /impressum/
@@ -9,4 +8,4 @@ Disallow: /datenschutz/
 Disallow: /lebenslauf/
 Disallow: /cv-classic/
 
-Sitemap: {{ site.url }}/sitemap.xml
+Sitemap: {{ $page->siteUrl }}/sitemap.xml

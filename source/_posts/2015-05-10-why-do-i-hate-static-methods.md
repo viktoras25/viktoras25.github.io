@@ -1,4 +1,6 @@
 ---
+extends: _layouts.post
+section: content
 title: Why do I hate static methods
 tags: []
 categories: [php]

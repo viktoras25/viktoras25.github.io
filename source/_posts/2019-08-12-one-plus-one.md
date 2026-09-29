@@ -1,4 +1,6 @@
 ---
+extends: _layouts.post
+section: content
 title: One plus one
 tags: []
 categories: []

@@ -1,4 +1,6 @@
 ---
+extends: _layouts.post
+section: content
 title: Complexity / competence ratio
 description: Keeping the project stable as the complexity grows.
 tags: [management]

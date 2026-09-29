@@ -1,4 +1,6 @@
 ---
+extends: _layouts.post
+section: content
 title: 4 Layer API Client Structure
 tags: []
 categories: []

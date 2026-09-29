@@ -1,13 +1,11 @@
 ---
-layout: default
 title: Impressum
 lang: de
 legal_page: true
+extends: _layouts.legal
+section: content
 ---
 
-{% block head_meta %}<meta name="robots" content="noindex">{% endblock %}
-
-{% block posts %}
 ## Impressum
 
 
@@ -42,4 +40,3 @@ Die auf unserer Internetseite enthaltenen Inhalte sind, soweit möglich, urheber
 Das Herunterladen und Kopieren unserer Internetseite ist sowohl für den privaten als auch den kommerziellen Gebrauch von uns schriftlich zu gestatten. Wir weisen darauf hin, dass wir hinsichtlich der Inhalte auf unserer Internetseite, soweit sie nicht von uns erstellt worden sind, das Urheberrecht von Dritten jederzeit beachtet hatten.
 
 Wenn Sie uns mitteilen würden, dass Sie trotzdem eine Urheberrechtsverletzung gefunden haben, würden wir das sehr schätzen. Dann können wir den entsprechenden Inhalt sofort entfernen und würden damit das Urheberrecht nicht mehr verletzen, einen rechtswidrigen Zustand also nicht fortsetzen.
-{% endblock %}

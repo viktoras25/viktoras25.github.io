@@ -1,15 +1,15 @@
-{% extends "default" %}
+@extends('_layouts.default')
 
-{% block posts %}
+@section('posts')
     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="{{ page.url }}" rel="bookmark">{{ page.title }}</a>
+                <a href="{{ $page->getPath() }}" rel="bookmark">{{ $page->title }}</a>
             </h2>
-            <div class="col date text-end float-end">{{ page.post_date }}</div>
+            <div class="col date text-end float-end">{{ $page->post_date }}</div>
         </div>
         <div class="entry">
-            {{ page.blocks.content|raw }}
+            @yield('content')
         </div>
 
         <div class="post-license text-center">
@@ -18,4 +18,4 @@
             </small>
         </div>
     </article>
-{% endblock %}
+@endsection

@@ -1,18 +1,18 @@
-{% extends "blank" %}
+@extends('_layouts.master')
 
-{% block title %}{{ page.title }}{% endblock %}
+@section('title', $page->title)
 
-{% block head_scripts %}
+@section('head_scripts')
 <script type="application/ld+json">
 {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "{{ site.author }}",
-    "url": "{{ site.url }}",
-    "image": "{{ site.image }}",
+    "@@context": "https://schema.org",
+    "@@type": "Person",
+    "name": "{{ $page->siteAuthor }}",
+    "url": "{{ $page->siteUrl }}",
+    "image": "{{ $page->siteImage }}",
     "jobTitle": "Engineering Manager",
-    "worksFor": { "@type": "Organization", "name": "LeasingMarkt.de" },
-    "address": { "@type": "PostalAddress", "addressLocality": "Leipzig", "addressCountry": "DE" },
+    "worksFor": { "@@type": "Organization", "name": "LeasingMarkt.de" },
+    "address": { "@@type": "PostalAddress", "addressLocality": "Leipzig", "addressCountry": "DE" },
     "sameAs": [
         "https://github.com/viktoras25",
         "https://www.linkedin.com/in/vkts",
@@ -20,9 +20,9 @@
     ]
 }
 </script>
-{% endblock %}
+@endsection
 
-{% block head_styles %}
+@section('head_styles')
 <style>
     body, html {
         height: 100%;
@@ -132,16 +132,15 @@
         margin-left: 10px;
     }
 </style>
-{% endblock %}
+@endsection
 
-
-{% block contents %}
+@section('contents')
     <div class="container-fluid g-0">
         <div class="row g-0">
 
             <nav class="navbar navbar-expand offset-lg-5 offset-md-4 col-lg-7 col-md-8 col-sm-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    {% include 'menu-items.html' %}
+                    @include('_partials.menu-items')
                 </div>
             </nav>
 
@@ -153,20 +152,23 @@
                         <h1>Viktoras Bezaras</h1>
 
                         <h5>Engineering Manager at LeasingMarkt.de</h5>
-
-                        {% set now_months = ("now"|date("Y")) * 12 + ("now"|date("n")) %}
-                        {% set stats = [
-                            { year: 2008, month: 7, round: 'down', label: 'of software development' },
-                            { year: 2019, month: 7, round: 'down', label: 'of engineering management' },
-                            { year: 2025, month: 8, round: 'up', label: 'of AI development' }
-                        ] %}
-                        <ul>
-                            {% for s in stats %}
-                                {% set months = now_months - (s.year * 12 + s.month) %}
-                                {% set years = s.round == 'up' ? (months + 11) // 12 : months // 12 %}
-                                <li><span class="js-years" data-year="{{ s.year }}" data-month="{{ s.month }}" data-round="{{ s.round }}">{{ years }} {{ years == 1 ? 'year' : 'years' }}</span> {{ s.label }}</li>
-                            {% endfor %}
-                        </ul>
+@php
+    $nowMonths = (int) date('Y') * 12 + (int) date('n');
+    $stats = [
+        ['year' => 2008, 'month' => 7, 'round' => 'down', 'label' => 'of software development'],
+        ['year' => 2019, 'month' => 7, 'round' => 'down', 'label' => 'of engineering management'],
+        ['year' => 2025, 'month' => 8, 'round' => 'up', 'label' => 'of AI development'],
+    ];
+@endphp
+<ul>
+    @foreach ($stats as $s)
+        @php
+            $months = $nowMonths - ($s['year'] * 12 + $s['month']);
+            $years = $s['round'] === 'up' ? intdiv($months + 11, 12) : intdiv($months, 12);
+        @endphp
+        <li><span class="js-years" data-year="{{ $s['year'] }}" data-month="{{ $s['month'] }}" data-round="{{ $s['round'] }}">{{ $years }} {{ $years == 1 ? 'year' : 'years' }}</span> {{ $s['label'] }}</li>
+    @endforeach
+</ul>
 
                         <div class="social-icons">
                             <a href="https://github.com/viktoras25" title="GitHub"><i class="bi-github"></i></a>
@@ -190,8 +192,8 @@
                     </div>
                 </div>
 
-                {% include 'footer.html' %}
+                @include('_partials.footer')
             </section>
         </div>
     </div>
-{% endblock %}
+@endsection

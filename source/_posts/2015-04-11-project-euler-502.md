@@ -1,4 +1,6 @@
 ---
+extends: _layouts.post
+section: content
 title: Project Euler 502
 tags: []
 categories: [haskell, euler]

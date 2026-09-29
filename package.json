@@ -12,8 +12,8 @@
   "scripts": {
     "dev": "vite build --watch",
     "build": "vite build",
-    "serve": "container run --rm -it --init -p 8000:8000 -v `pwd`:/app viktoras25/sculpin:3.3.0-alpha4 generate --watch --server --env=live",
-    "clean": "rm -rf ./output_live"
+    "serve": "vite build && vendor/bin/jigsaw serve",
+    "clean": "rm -rf ./build_local ./build_production"
   },
   "devDependencies": {
     "bootstrap": "5.3",

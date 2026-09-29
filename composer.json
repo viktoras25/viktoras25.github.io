@@ -1,0 +1,13 @@
+{
+    "name": "viktoras/viktoras.de",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Viktoras Bezaras",
+            "email": "viktoras.bezaras@gmail.com"
+        }
+    ],
+    "require": {
+        "tightenco/jigsaw": "^1.8"
+    }
+}

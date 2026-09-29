@@ -1,4 +1,6 @@
 ---
+extends: _layouts.post
+section: content
 title: "Symfony: свой фильтр в admin generator"
 tags: [admin generator, form filter, symfony]
 categories: [php]
@@ -7,7 +9,7 @@ language: ru
 post_date: 08.09.2010
 ---
 
-<img class="oppic" src="{{site.url}}/img/symfony_logo.gif"/>Кратко о том, как сделать фильтр для админ генератора. В моем проекте используется Doctrine с поведением NestedSet, и фильтр мне нужен был по родительскому полю. Точнее, показать потомков выбранного элемента. Для этого я пошел в папку /lib/filters и открыл файл фильтров для нужной модели. Там будем править метод configure. В моем случае дело происходит в плагине, поэтому метод, который я буду править называется setupInheritance.<!--more-->
+<img class="oppic" src="/img/symfony_logo.gif"/>Кратко о том, как сделать фильтр для админ генератора. В моем проекте используется Doctrine с поведением NestedSet, и фильтр мне нужен был по родительскому полю. Точнее, показать потомков выбранного элемента. Для этого я пошел в папку /lib/filters и открыл файл фильтров для нужной модели. Там будем править метод configure. В моем случае дело происходит в плагине, поэтому метод, который я буду править называется setupInheritance.<!--more-->
 
 ```php
 public function  setupInheritance() {

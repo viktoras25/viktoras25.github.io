@@ -1,11 +1,13 @@
 ---
-layout: resume
-title: Viktoras Bezaras · CV
-description: CV of Viktoras Bezaras, Engineering Manager in Leipzig. Engineering leadership at LeasingMarkt.de / AutoScout24, former CTO at SportSpar, AI-first development workflows.
+title: Viktoras Bezaras · Lebenslauf
+lang: de
 ---
+@extends('_layouts.resume')
 
-{% block head_styles %}
-{{ parent() }}
+@section('title', $page->title)
+
+@section('head_styles')
+@parent
 <link href="/css/cv-fonts.css" rel="stylesheet">
 <style>
   /* Colors */
@@ -117,9 +119,9 @@ description: CV of Viktoras Bezaras, Engineering Manager in Leipzig. Engineering
     .cv2-pg:last-child { break-after: auto; }
   }
 </style>
-{% endblock %}
+@endsection
 
-{% block contents %}
+@section('contents')
 <div class="cv2-stack">
 
   <!-- PAGE 1 -->
@@ -128,17 +130,17 @@ description: CV of Viktoras Bezaras, Engineering Manager in Leipzig. Engineering
 
       <div class="cv2-photo-wrap">
         <picture>
-          <source srcset="{{site.url}}/img/viktoras_8.avif" type="image/avif" />
-          <img src="{{site.url}}/img/viktoras_8.jpg" class="cv2-photo" decoding="async" loading="lazy" alt="Viktoras Bezaras" />
+          <source srcset="/img/viktoras_8.avif" type="image/avif" />
+          <img src="/img/viktoras_8.jpg" class="cv2-photo" decoding="async" loading="lazy" alt="Viktoras Bezaras" />
         </picture>
       </div>
       <h1 class="cv2-iser cv2-name">Viktoras Bezaras</h1>
       <div class="cv2-accent-bar"></div>
-      <div class="cv2-contact">mail@viktoras.de&nbsp;&nbsp;·&nbsp;&nbsp;Leipzig, Germany&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://viktoras.de">viktoras.de</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://github.com/viktoras25">github.com/viktoras25</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://www.linkedin.com/in/vkts/">linkedin.com/in/vkts</a></div>
+      <div class="cv2-contact">mail@viktoras.de&nbsp;&nbsp;·&nbsp;&nbsp;Leipzig, Deutschland&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://viktoras.de">viktoras.de</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://github.com/viktoras25">github.com/viktoras25</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://www.linkedin.com/in/vkts/">linkedin.com/in/vkts</a></div>
       <div class="cv2-divider"></div>
-      <p class="cv2-iser cv2-profile">I build products and organizations where AI isn't a feature but the way of working: over 4 years I turned my team agentic-first, doubling velocity and freeing time for real architectural work. I work leader-leader built on trust, with engineers who fully own their domains.</p>
+      <p class="cv2-iser cv2-profile">Ich baue Produkte und Teams, in denen KI kein Feature, sondern die Arbeitsweise ist: In 4 Jahren machte ich mein Team agentic-first und verdoppelte die Velocity. Ich arbeite leader-leader, auf Vertrauen gebaut, mit Entwicklern, die ihre Bereiche voll verantworten.</p>
 
-      <div class="cv2-sechead cv2-sechead-exp"><span class="cv2-sectitle">Experience</span><span class="cv2-secline"></span></div>
+      <div class="cv2-sechead cv2-sechead-exp"><span class="cv2-sectitle">Berufserfahrung</span><span class="cv2-secline"></span></div>
 
       <div class="cv2-col cv2-jobs">
 
@@ -146,19 +148,19 @@ description: CV of Viktoras Bezaras, Engineering Manager in Leipzig. Engineering
         <div>
           <div class="cv2-row">
             <div class="cv2-job-title">Engineering Manager <span class="cv2-accent-dot">·</span> LeasingMarkt.de / AutoScout24</div>
-            <div class="cv2-date">03/2022 - now</div>
+            <div class="cv2-date">03/2022 - heute</div>
           </div>
-          <div class="cv2-iser cv2-desc">Düsseldorf - LeasingMarkt GmbH is a car leasing marketplace with 2M+ monthly visitors, acquired by AutoScout24 Group. I led developer teams as an engineering manager and a tech lead.</div>
+          <div class="cv2-iser cv2-desc">Düsseldorf - LeasingMarkt GmbH ist ein Auto-Leasing-Marktplatz mit über 2 Mio. monatlichen Besuchern, übernommen von der AutoScout24 Group. Ich leitete Entwicklerteams als Engineering Manager und Tech Lead.</div>
           <ul class="cv2-bullets">
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Managed 15 developers across 4 engineering teams following LeasingMarkt's acquisition by AutoScout24 Group</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Built an agentic development suite (Claude, Codex) with agents, skills, and AI-first workflows adopted across the team</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Migrated on-premises infrastructure to AWS, then cut resulting AWS spend by 80% through optimization</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Migrated engineering org to GitHub and re-architected CI/CD pipelines</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Doubled team velocity (story points/sprint) by redesigning agile workflows and introducing AI-assisted development tooling</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Owned full performance management cycle - 1:1s, reviews, PIPs, exits</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Führte 15 Entwickler in 4 Engineering-Teams nach der Übernahme von LeasingMarkt durch die AutoScout24 Group</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Baute eine agentische Entwicklungs-Suite (Claude, Codex) mit Agents, Skills und KI-first-Workflows für das gesamte Team</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Migrierte On-Premises-Infrastruktur zu AWS, senkte die AWS-Kosten anschließend um 80 % durch Optimierung</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Migrierte die Engineering-Organisation zu GitHub und architektierte die CI/CD-Pipelines neu</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Verdoppelte die Team-Velocity (Story Points/Sprint) durch neue agile Workflows und KI-gestützte Tools</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Verantwortete den gesamten Performance-Management-Zyklus - 1:1s, Reviews, PIPs, Exits</li>
           </ul>
           <div class="cv2-chips">
-            <span class="cv2-chip">People Management</span><span class="cv2-chip">Hiring</span><span class="cv2-chip">Performance Management</span><span class="cv2-chip">Team Leadership</span><span class="cv2-chip">Stakeholder Management</span>
+            <span class="cv2-chip">Personalführung</span><span class="cv2-chip">Recruiting</span><span class="cv2-chip">Performance Management</span><span class="cv2-chip">Teamführung</span><span class="cv2-chip">Stakeholder-Management</span>
           </div>
           <div class="cv2-chips cv2-chips-row2">
             <span class="cv2-chip">PHP</span><span class="cv2-chip">Laravel</span><span class="cv2-chip">AWS</span><span class="cv2-chip">CDK</span><span class="cv2-chip">Claude Code</span><span class="cv2-chip">MariaDB</span><span class="cv2-chip">Agile</span><span class="cv2-chip">GitHub Actions</span><span class="cv2-chip">GitHub</span><span class="cv2-chip">Codex</span>
@@ -171,16 +173,16 @@ description: CV of Viktoras Bezaras, Engineering Manager in Leipzig. Engineering
             <div class="cv2-job-title">CTO <span class="cv2-accent-dot">·</span> SportSpar</div>
             <div class="cv2-date">07/2019 - 03/2022</div>
           </div>
-          <div class="cv2-iser cv2-desc">Leipzig - SportSpar is an online outlet for discounted sportswear and equipment, processing thousands of orders per day across multiple European markets.</div>
+          <div class="cv2-iser cv2-desc">Leipzig - SportSpar ist ein Online-Outlet für reduzierte Sportbekleidung und -ausrüstung, das täglich Tausende Bestellungen in mehreren europäischen Märkten verarbeitet.</div>
           <ul class="cv2-bullets">
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Hired, organised and managed a team of 7 developers</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Fully rebuilt PMS architecture, infrastructure, test coverage, message queue</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Established team-oriented agile development processes</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Introduced quality standards and automated them via CI/CD processes</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Dramatically improved order processing speed</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Stellte ein Team von 7 Entwicklern ein, organisierte und leitete es</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Baute PMS-Architektur, Infrastruktur, Testabdeckung und Message Queue vollständig neu auf</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Etablierte teamorientierte agile Entwicklungsprozesse</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Führte Qualitätsstandards ein und automatisierte sie über CI/CD-Prozesse</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Verbesserte die Bestellverarbeitungsgeschwindigkeit drastisch</li>
           </ul>
           <div class="cv2-chips">
-            <span class="cv2-chip">People Management</span><span class="cv2-chip">Hiring</span><span class="cv2-chip">Team Leadership</span>
+            <span class="cv2-chip">Personalführung</span><span class="cv2-chip">Recruiting</span><span class="cv2-chip">Teamführung</span>
           </div>
           <div class="cv2-chips cv2-chips-row2">
             <span class="cv2-chip">PHP</span><span class="cv2-chip">MariaDB</span><span class="cv2-chip">Laravel</span><span class="cv2-chip">RabbitMQ</span><span class="cv2-chip">PHPUnit</span><span class="cv2-chip">Agile</span><span class="cv2-chip">Redis</span><span class="cv2-chip">Gitlab CI/CD</span><span class="cv2-chip">Youtrack</span><span class="cv2-chip">Ansible</span>
@@ -190,16 +192,16 @@ description: CV of Viktoras Bezaras, Engineering Manager in Leipzig. Engineering
         <!-- TraSo -->
         <div>
           <div class="cv2-row">
-            <div class="cv2-job-title">Integrations Lead / Developer <span class="cv2-accent-dot">·</span> TraSo</div>
+            <div class="cv2-job-title">Integrations Lead / Entwickler <span class="cv2-accent-dot">·</span> TraSo</div>
             <div class="cv2-date">05/2014 - 06/2019</div>
           </div>
-          <div class="cv2-iser cv2-desc">Leipzig - TraSo GmbH builds backend software for tour operators to place billions of travel offers on the market every day.</div>
+          <div class="cv2-iser cv2-desc">Leipzig - TraSo GmbH entwickelt Backend-Software für Reiseveranstalter, um täglich Milliarden Reiseangebote zu vermarkten.</div>
           <ul class="cv2-bullets">
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Inherited the most problematic module; turned it into the most stable part of the system</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Drastically reduced the amount of errors with thousands of unit tests</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Tripled the number of connected third-party services/APIs</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Took over further domains: booking and transfer interfaces, OTDS export</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Organised, took over and mentored the integrations team</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Übernahm das problematischste Modul und machte es zum stabilsten Teil des Systems</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Reduzierte die Fehlerquote drastisch durch tausende Unit-Tests</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Verdreifachte die Anzahl der angebundenen Drittanbieter-Services/APIs</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Übernahm weitere Domänen: Buchungs- und Transferschnittstellen, OTDS-Export</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Organisierte, übernahm und mentorte das Integrations-Team</li>
           </ul>
           <div class="cv2-chips">
             <span class="cv2-chip">PHP</span><span class="cv2-chip">MySQL</span><span class="cv2-chip">Zend Framework</span><span class="cv2-chip">PHPUnit</span><span class="cv2-chip">Git</span><span class="cv2-chip">Jira</span><span class="cv2-chip">Stash</span><span class="cv2-chip">Bamboo</span><span class="cv2-chip">GitLab</span>
@@ -216,10 +218,10 @@ description: CV of Viktoras Bezaras, Engineering Manager in Leipzig. Engineering
 
       <div class="cv2-row cv2-pg2-header">
         <div class="cv2-pg-name">Viktoras Bezaras</div>
-        <div class="cv2-pg-num">Page 2 / 2</div>
+        <div class="cv2-pg-num">Seite 2 / 2</div>
       </div>
 
-      <div class="cv2-sechead cv2-sechead-exp"><span class="cv2-sectitle">Experience - continued</span><span class="cv2-secline"></span></div>
+      <div class="cv2-sechead cv2-sechead-exp"><span class="cv2-sectitle">Berufserfahrung - Fortsetzung</span><span class="cv2-secline"></span></div>
 
       <div class="cv2-col cv2-jobs-sm">
 
@@ -229,7 +231,7 @@ description: CV of Viktoras Bezaras, Engineering Manager in Leipzig. Engineering
             <div class="cv2-job-title-sm">Senior Developer <span class="cv2-accent-dot">·</span> meets-ecommerce</div>
             <div class="cv2-date">06/2013 - 05/2014</div>
           </div>
-          <div class="cv2-iser cv2-desc-sm">Niesky - Designed and developed a microservice-based e-commerce management system with integrations to Magento and other sales platforms.</div>
+          <div class="cv2-iser cv2-desc-sm">Niesky - Entwarf und entwickelte ein microservice-basiertes E-Commerce-Steuerungssystem mit Anbindungen an Magento und andere Verkaufsplattformen.</div>
           <div class="cv2-chips cv2-chips-no-top">
             <span class="cv2-chip">PHP</span><span class="cv2-chip">Phalcon Framework</span><span class="cv2-chip">RabbitMQ</span><span class="cv2-chip">PostgreSQL</span><span class="cv2-chip">Git</span><span class="cv2-chip">Robot Framework</span><span class="cv2-chip">Scrum</span>
           </div>
@@ -238,10 +240,10 @@ description: CV of Viktoras Bezaras, Engineering Manager in Leipzig. Engineering
         <!-- netforge -->
         <div>
           <div class="cv2-row">
-            <div class="cv2-job-title-sm">PHP Developer <span class="cv2-accent-dot">·</span> netforge</div>
+            <div class="cv2-job-title-sm">PHP-Entwickler <span class="cv2-accent-dot">·</span> netforge</div>
             <div class="cv2-date">01/2011 - 04/2013</div>
           </div>
-          <div class="cv2-iser cv2-desc-sm">Berlin - Online dating platform. Sole developer responsible for building a full accounting management system from scratch (Symfony/Doctrine), plus advertising modules and multi-tenancy features. Worked 100% remotely and independently.</div>
+          <div class="cv2-iser cv2-desc-sm">Berlin - Online-Dating-Plattform. Als alleiniger Entwickler verantwortlich für den Aufbau eines vollständigen Abrechnungssystems von Grund auf (Symfony/Doctrine), zusätzlich Werbemodule und Mandantenfähigkeit. Arbeitete 100% remote und eigenverantwortlich.</div>
           <div class="cv2-chips cv2-chips-no-top">
             <span class="cv2-chip">PHP</span><span class="cv2-chip">MySQL</span><span class="cv2-chip">SQLite</span><span class="cv2-chip">Symfony Framework</span><span class="cv2-chip">Doctrine</span><span class="cv2-chip">Lime</span><span class="cv2-chip">SVN</span><span class="cv2-chip">Bootstrap</span>
           </div>
@@ -250,10 +252,10 @@ description: CV of Viktoras Bezaras, Engineering Manager in Leipzig. Engineering
         <!-- WEB-SHOP-HOSTING -->
         <div>
           <div class="cv2-row">
-            <div class="cv2-job-title-sm">PHP Developer <span class="cv2-accent-dot">·</span> WEB-SHOP-HOSTING</div>
+            <div class="cv2-job-title-sm">PHP-Entwickler <span class="cv2-accent-dot">·</span> WEB-SHOP-HOSTING</div>
             <div class="cv2-date">03/2010 - 12/2010</div>
           </div>
-          <div class="cv2-iser cv2-desc-sm">Berlin - Online agency for shop hosting and website development. Developed a Symfony-based CMS and a Drupal website for Teamdrive GmbH.</div>
+          <div class="cv2-iser cv2-desc-sm">Berlin - Online-Agentur für Shop-Hosting und Website-Entwicklung. Entwickelte ein Symfony-basiertes CMS sowie eine Drupal-Website für die Teamdrive GmbH.</div>
           <div class="cv2-chips cv2-chips-no-top">
             <span class="cv2-chip">PHP</span><span class="cv2-chip">Symfony</span><span class="cv2-chip">Nginx</span><span class="cv2-chip">MySQL</span><span class="cv2-chip">Drupal 7</span><span class="cv2-chip">Mercurial</span>
           </div>
@@ -262,10 +264,10 @@ description: CV of Viktoras Bezaras, Engineering Manager in Leipzig. Engineering
         <!-- RedFortress -->
         <div>
           <div class="cv2-row">
-            <div class="cv2-job-title-sm">PHP Developer <span class="cv2-accent-dot">·</span> RedFortress</div>
+            <div class="cv2-job-title-sm">PHP-Entwickler <span class="cv2-accent-dot">·</span> RedFortress</div>
             <div class="cv2-date">07/2008 - 03/2010</div>
           </div>
-          <div class="cv2-iser cv2-desc-sm">Saint Petersburg - SEO and web development agency. Developed and maintained food delivery websites and internal tools for SEO.</div>
+          <div class="cv2-iser cv2-desc-sm">Sankt Petersburg - SEO- und Webentwicklungsagentur. Entwickelte und wartete Essenslieferungs-Websites sowie interne SEO-Tools.</div>
           <div class="cv2-chips cv2-chips-no-top">
             <span class="cv2-chip">PHP</span><span class="cv2-chip">Symfony</span><span class="cv2-chip">Apache</span><span class="cv2-chip">CSS</span><span class="cv2-chip">MySQL</span><span class="cv2-chip">Javascript</span>
           </div>
@@ -273,34 +275,34 @@ description: CV of Viktoras Bezaras, Engineering Manager in Leipzig. Engineering
 
       </div>
 
-      <div class="cv2-sechead cv2-sechead-edu"><span class="cv2-sectitle">Education</span><span class="cv2-secline"></span></div>
+      <div class="cv2-sechead cv2-sechead-edu"><span class="cv2-sectitle">Ausbildung</span><span class="cv2-secline"></span></div>
       <div class="cv2-col cv2-edu-list">
 
         <div>
           <div class="cv2-row">
-            <div class="cv2-edu-title">Postgraduate in computer science</div>
+            <div class="cv2-edu-title">Postgraduiertenstudium in Informatik</div>
             <div class="cv2-date cv2-date-sm">10/2008 - 09/2009</div>
           </div>
-          <div class="cv2-iser cv2-edu-desc">Herzen State Pedagogical University</div>
+          <div class="cv2-iser cv2-edu-desc">Staatliche Pädagogische Herzen-Universität</div>
         </div>
 
         <div>
           <div class="cv2-row">
-            <div class="cv2-edu-title">Degree in information systems and technologies</div>
+            <div class="cv2-edu-title">Diplom in Informationssystemen und -technologien</div>
             <div class="cv2-date cv2-date-sm">09/2003 - 07/2008</div>
           </div>
-          <div class="cv2-iser cv2-edu-desc">State University for Waterways Communications, Saint Petersburg · State Exam: Excellent</div>
+          <div class="cv2-iser cv2-edu-desc">Staatliche Universität für Wasserstraßenverkehrswege, Sankt Petersburg · Staatsexamen: Sehr gut</div>
         </div>
 
       </div>
 
       <div class="cv2-lang-section">
-        <div class="cv2-sechead cv2-sechead-lang"><span class="cv2-sectitle">Languages</span><span class="cv2-secline"></span></div>
+        <div class="cv2-sechead cv2-sechead-lang"><span class="cv2-sectitle">Sprachen</span><span class="cv2-secline"></span></div>
         <div class="cv2-lang-list">
-          <div class="cv2-lang-item"><span class="cv2-edu-title">English</span><span class="cv2-iser cv2-lang-level">fluent</span></div>
-          <div class="cv2-lang-item"><span class="cv2-edu-title">German</span><span class="cv2-iser cv2-lang-level">fluent</span></div>
-          <div class="cv2-lang-item"><span class="cv2-edu-title">Russian</span><span class="cv2-iser cv2-lang-level">native</span></div>
-          <div class="cv2-lang-item"><span class="cv2-edu-title">Spanish</span><span class="cv2-iser cv2-lang-level">basic</span></div>
+          <div class="cv2-lang-item"><span class="cv2-edu-title">Englisch</span><span class="cv2-iser cv2-lang-level">fließend</span></div>
+          <div class="cv2-lang-item"><span class="cv2-edu-title">Deutsch</span><span class="cv2-iser cv2-lang-level">fließend</span></div>
+          <div class="cv2-lang-item"><span class="cv2-edu-title">Russisch</span><span class="cv2-iser cv2-lang-level">Muttersprache</span></div>
+          <div class="cv2-lang-item"><span class="cv2-edu-title">Spanisch</span><span class="cv2-iser cv2-lang-level">Grundkenntnisse</span></div>
         </div>
       </div>
 
@@ -308,4 +310,4 @@ description: CV of Viktoras Bezaras, Engineering Manager in Leipzig. Engineering
   </div>
 
 </div>
-{% endblock %}
+@endsection
