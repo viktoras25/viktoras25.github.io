@@ -26,11 +26,7 @@
         <div class="row g-0">
             <nav class="navbar navbar-expand col-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav ml-auto nav-ul">
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" data-scroll-nav="0">Services</a>-->
-<!--    </li>-->
-</ul>
+                    <ul class="navbar-nav ml-auto nav-ul"></ul>
                 </div>
             </nav>
         </div>
@@ -46,16 +42,16 @@
                     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="/read/symfony-custom-action-with-doctrinerulecollection/" rel="bookmark">Symfony: свой экшен в DoctrineRouteCollection</a>
+                <a href="/read/symfony-custom-action-with-doctrinerulecollection" rel="bookmark">Symfony: свой экшен в DoctrineRouteCollection</a>
             </h2>
             <div class="col date text-end float-end">04.07.2011</div>
         </div>
         <div class="entry">
-            <p><img class="oppic" src="https://viktoras.de/img/symfony_logo.gif"/>Я часто сталкивался с необходимостью указать путь к своему экшену, например в link_to. До какого-то времени для меня вполне работал вариант 'module/action?parameter=value'. Однако, в один прекрасный день, количество таких ссылок возросло до нескольких сотен на странице. И они порядком тормозили, потому что роутингу приходилось проверять все указанные роуты, перед тем как использовать default. Решением в таких случаях являются именованные роуты, например '@users'. Но вот вопрос, как сделать именованный роут для админ генеренного модуля. Для таких модулей, добавляется DoctrineRouteCollection роут, который на самом деле генерит 7 роутов module_new, module_list и т.д.</p>
+            <p><img class="oppic" src="/img/symfony_logo.gif"/>Я часто сталкивался с необходимостью указать путь к своему экшену, например в link_to. До какого-то времени для меня вполне работал вариант 'module/action?parameter=value'. Однако, в один прекрасный день, количество таких ссылок возросло до нескольких сотен на странице. И они порядком тормозили, потому что роутингу приходилось проверять все указанные роуты, перед тем как использовать default. Решением в таких случаях являются именованные роуты, например '@users'. Но вот вопрос, как сделать именованный роут для админ генеренного модуля. Для таких модулей, добавляется DoctrineRouteCollection роут, который на самом деле генерит 7 роутов module_new, module_list и т.д.</p>
 
 <p>Ну и вот мы делаем такой финт ушами:</p>
 
-<pre><code class="yaml">modules:
+<pre><code class="language-yaml">modules:
   class: sfDoctrineRouteCollection
   options:
     model:                modules
@@ -69,7 +65,6 @@
 </code></pre>
 
 <p>В сгенеренный роут я добавил параметр object_action, после чего этот роут будет так же генерить роуты @modules_action1 и @modules_action2, что нам собственно и нужно. А GET - это тип запроса, на который будет отзываться новоделанный роут.</p>
-
         </div>
 
         <div class="post-license text-center">

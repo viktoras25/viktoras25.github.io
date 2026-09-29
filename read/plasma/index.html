@@ -26,11 +26,7 @@
         <div class="row g-0">
             <nav class="navbar navbar-expand col-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav ml-auto nav-ul">
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" data-scroll-nav="0">Services</a>-->
-<!--    </li>-->
-</ul>
+                    <ul class="navbar-nav ml-auto nav-ul"></ul>
                 </div>
             </nav>
         </div>
@@ -46,24 +42,24 @@
                     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="/read/plasma/" rel="bookmark">Демо: плазма</a>
+                <a href="/read/plasma" rel="bookmark">Демо: плазма</a>
             </h2>
             <div class="col date text-end float-end">13.05.2013</div>
         </div>
         <div class="entry">
-            <p><img src="https://viktoras.de/img/posts/2013-05-14-plasma/plasma-logo.png" class="oppic" height="150px">Эффект плазмы (или попросту плазма) - эффект часто использующийся в демках, чтобы создать переливающийся эффект. Есть много способов создать анимацию плазмы, но я рассмотрю только один: сумма синусов и некоторых других функций. Экспериментируя с параметрами и пробуя различные функции, а так же цвета, можно найти очень круто выглядящие комбинации. Оригинал этой статьи можно найти <a href="http://lodev.org/cgtutor/plasma.html">здесь</a>. В ней примеры указаны с использованием С, я же делал все на HTML5 (JavaScript + canvas). Примеры довольно просты и перенести на любой другой язык будет несложно. Внутри около 5 мегабайт картинок, если кого-то это беспокоит.<!--more--></p>
+            <p><img src="/img/posts/2013-05-14-plasma/plasma-logo.png" class="oppic" height="150px">Эффект плазмы (или попросту плазма) - эффект часто использующийся в демках, чтобы создать переливающийся эффект. Есть много способов создать анимацию плазмы, но я рассмотрю только один: сумма синусов и некоторых других функций. Экспериментируя с параметрами и пробуя различные функции, а так же цвета, можно найти очень круто выглядящие комбинации. Оригинал этой статьи можно найти <a href="http://lodev.org/cgtutor/plasma.html">здесь</a>. В ней примеры указаны с использованием С, я же делал все на HTML5 (JavaScript + canvas). Примеры довольно просты и перенести на любой другой язык будет несложно. Внутри около 5 мегабайт картинок, если кого-то это беспокоит.<!--more--></p>
 
 <p>Перед тем, как мы приступим к собственно созданию плазмы, давайте рассмотрим функцию, которая нам в этом поможет. Значения функции синус лежат в промежутке от -1 до +1, выглядит вот так:</p>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/sine.png"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/sine.png"></p>
 
 <p>Для наших целей мы отобразим ее немного иначе, а именно будем устанавливать цвет пикселя равным синусу его x-координаты:</p>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/example1.png"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/example1.png"></p>
 
 <p>Белые полосы это места, где синус близок или равен единице, черные, соответственно, близко к -1. Такого эффекта можно добиться следующим кодом:</p>
 
-<pre><code class="javascript">for (y = 0; y &lt; canvas.width; y++) {
+<pre><code class="language-javascript">for (y = 0; y &lt; canvas.width; y++) {
     for (x = 0; x &lt; canvas.height; x++) {
         color = 128 + Math.floor(128 * Math.sin(x / 4));
         context.fillStyle = rgbString(color, color, color);
@@ -74,19 +70,19 @@
 
 <p>Мы проходим через каждый пиксель, расчитываем его цвет на основе синуса, и выводим. Значение цвета должно быть в пределах от 0 до 256 (0x00 - 0xFF), а так как синус всегда имеет значение между -1 и 1, мы преобразуем его в 0-256, умножив на 128 и прибавив 128. X делим на 4 чтобы значение функции менялось медленнее. Если разделить на меньшее значение, то полосы станут уже:</p>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/example2.png"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/example2.png"></p>
 
 <p>Если использовать синус от суммы sin((x + y) / 8.0), то линии будут скошенными:</p>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/example3.png"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/example3.png"></p>
 
 <p>Другая интересная функция для плазмы это синус расстояния от пикселя до определенной точки. Расстояние от пикселя до точки отсчета (0, 0) равняется sqrt(x * x + y * y). А расстояние от пикселя до центра экрана (холста): sqrt((x - w / 2) * (x - w / 2) + (y - h / 2) * (y - h / 2)). Если взять от этого синус, то получится:</p>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/example4.png"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/example4.png"></p>
 
 <p>Вот код, который генерирует такую картинку (в этом примере, я перенес точку координат в центр изображения, для простоты [charnad]):</p>
 
-<pre><code class="javascript">for (y = -cY; y &lt; cY; y++) {
+<pre><code class="language-javascript">for (y = -cY; y &lt; cY; y++) {
     for (x = -cX; x &lt; cX; x++) {
         color = 128 + Math.floor(128 * Math.sin(Math.sqrt(x*x + y*y) / 8));
         context.fillStyle = rgbString(color, color, color);
@@ -97,11 +93,11 @@
 
 <p>Складывая эти функции (с различными коэффициентами, точками отсчета, и т.д.), и используя лучшую цветовую палитру, чем оттенки серого, которые мы использовали до сих пор, мы можем создавать крутую плазму. Для разогрева, вот плазма сгенерированная суммой двух функций:</p>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/example5.png"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/example5.png"></p>
 
 <p>Несмотря на то, что выглядит не очень круто, это уже настоящая плазма. Она получается из суммы синусов x и y. Код ничуть не сложнее предыдущих примеров, но для ясности я расписал формулу на несколько строк. Также, в конце результат делится на два, таким образом мы остаемся в пределах 0-255:</p>
 
-<pre><code class="javascript">for (y = 0; y &lt; canvas.height; y++) {
+<pre><code class="language-javascript">for (y = 0; y &lt; canvas.height; y++) {
     for (x = 0; x &lt; canvas.width; x++) {
         color = 128 + Math.floor(128 * Math.sin(x / 8));
         color += 128 + Math.floor(128 * Math.sin(y / 8));
@@ -115,17 +111,17 @@
 <p>Чтобы получить и цвета и анимацию, мы будем использовать цветовую палитру (параметр "цвет" будет использоваться как индекс для выбора цвета из палитры), и каждый фрейм будем сдвигать палитру на небольшое значение, так что все цвета палитры будут проходить по кругу. В таком режиме нам нужно будет нарисовать плазму только один раз и дальше только сдвигать палитру. Так как цвета меняются по кругу, палитра не должна быть "прерывистой", и заканчиваться должна тем же цветом, что и начинаться.
 Следующие две "прерываются" и не могут быть использованы для плазмы, потому что тогда анимация будет рваной или перескакивать:</p>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/palette1.png"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/palette1.png"></p>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/palette2.png"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/palette2.png"></p>
 
 <p>А вот эта палитра может быть использована:</p>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/palette3.png"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/palette3.png"></p>
 
 <p>Теперь чтобы у нас получился эффект плазмы: создаем палитру, создаем буфер, где будут хранится значения вычисленной функции синусов для разных пикселей, рисуем пиксели с цветом из палитры, смещаем палитру каждый фрейм. Плазма сама по себе такая же, как и в предыдущем примере, но использование палитры делает ее гораздо интереснее. Вот упрощенная часть кода, которая реализует этот алгоритм:</p>
 
-<pre><code class="javascript">// Просчитываем значения цвета, как и в предыдущих примерах
+<pre><code class="language-javascript">// Просчитываем значения цвета, как и в предыдущих примерах
 for (y = 0; y &lt; canvas.height; y++) {
     data[y] = [];
     for (x = 0; x &lt; canvas.width; x++) {
@@ -149,38 +145,38 @@ for (y = 0; y &lt; data.length; y++) {
 
 <p>и это дает нам примерно следующую картину:</p>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/plasma1.gif"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/plasma1.gif"></p>
 
 <p>Вторая картинка показывает ту же плазму, но с упрощенной палитрой состоящей всего из 2х цветов, чтобы можно было лучше проследить движение цвета.</p>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/plasma2.gif"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/plasma2.gif"></p>
 
 <p>Теперь, если в коде генерации плазмы мы заменим функцию на сумму 4 синусов, один из которых синус расстояния до верхнего левого угла картинки, то получим:</p>
 
-<pre><code class="javascript">color = 128 + (128 * Math.sin(x / 16));
+<pre><code class="language-javascript">color = 128 + (128 * Math.sin(x / 16));
 color += 128 + (128 * Math.sin(y / 8));
 color += 128 + (128 * Math.sin((x+y) / 16));
 color += 128 + (128 * Math.sin(Math.sqrt(x*x+y*y) / 8));
 color = Math.floor(color/4);
 </code></pre>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/plasma4.gif"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/plasma4.gif"></p>
 
 <p>И вот, что еще можно попробовать:</p>
 
-<pre><code class="javascript">color = 128 + (128 * Math.sin(x / 16));
+<pre><code class="language-javascript">color = 128 + (128 * Math.sin(x / 16));
 color += 128 + (128 * Math.sin(y / 32));
 color += 128 + (128 * Math.sin(Math.sqrt(Math.pow(cX-x, 2)+Math.pow(cY-y, 2)) / 8));
 color += 128 + (128 * Math.sin(Math.sqrt(x*x+y*y) / 8));
 color = Math.floor(color/4);
 </code></pre>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/plasma5.gif"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/plasma5.gif"></p>
 
 <p>Как видите, можно менять параметры и функции, пока не будет достигнут желаемый результат.
 Давайте теперь попробуем другие палитры.</p>
 
-<pre><code class="javascript">for (i = 0; i &lt; 256; i++) {
+<pre><code class="language-javascript">for (i = 0; i &lt; 256; i++) {
     r = Math.floor(128.0 + 128 * Math.sin(3.1415 * i / 32.0));
     g = Math.floor(128.0 + 128 * Math.sin(3.1415 * i / 64.0));
     b = Math.floor(128.0 + 128 * Math.sin(3.1415 * i / 128.0));
@@ -188,15 +184,15 @@ color = Math.floor(color/4);
 }
 </code></pre>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/palette4.png"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/palette4.png"></p>
 
 <p>Это все та же плазма, но уже с новой палитрой. Чтобы цвета не "перескакивали", палитра должна начинаться и заканчиваться одним и тем же цветом.</p>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/plasma6.gif"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/plasma6.gif"></p>
 
 <p>Следующая палитра дает довольно крутой эффект (хотя это дело вкуса):</p>
 
-<pre><code class="javascript">for (i = 0; i &lt; 256; i++) {
+<pre><code class="language-javascript">for (i = 0; i &lt; 256; i++) {
     r = Math.floor(128.0 + 128 * Math.sin(3.1415 * i / 16.0));
     g = Math.floor(128.0 + 128 * Math.sin(3.1415 * i / 128.0));
     b = 0;
@@ -204,13 +200,13 @@ color = Math.floor(color/4);
 }
 </code></pre>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/palette5.png"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/palette5.png"></p>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/plasma7.gif"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/plasma7.gif"></p>
 
 <p>Наконец, вместо использования палитры и ее смещения, можно так же пересчитывать синусы каждый фрейм, каждый раз меняя значения, используя время в функции. Можно генерировать RBG-составляющие отдельно. Это все в сумме довольно много вычислений, так что плазма может тормозить. Но упомянуть об этом стоит. Каждый фрейм, для каждого пикселя расчитывается сумма 4х расстояний. Затем, из полученного значения вычисляется цвет, и он же используется чтобы создать R, G и B составляющие цвета этого пикселя. Из-за такого способа подсчета цвета картинка получится немного пикселизированной.</p>
 
-<pre><code class="javascript">for (y = 0; y &lt; canvas.height; y++) {
+<pre><code class="language-javascript">for (y = 0; y &lt; canvas.height; y++) {
     for (x = 0; x &lt; canvas.width; x++) {
         color = Math.sin(dist(x + time, y, 128.0, 128.0) / 8.0)
         color += Math.sin(dist(x, y, 64.0, 64.0) / 8.0)
@@ -224,10 +220,9 @@ color = Math.floor(color/4);
 }
 </code></pre>
 
-<p class="img"><img src="https://viktoras.de/img/posts/2013-05-14-plasma/plasma8.gif"></p>
+<p class="img"><img src="/img/posts/2013-05-14-plasma/plasma8.gif"></p>
 
 <p>Можно так же расчитывать отдельную плазму для каждого цветового канала и т.д. Возможности безграничны, но это все будет медленнее, чем смещение палитры, особенно с неоптимизированными алгоритмами, которые приведены тут.</p>
-
         </div>
 
         <div class="post-license text-center">

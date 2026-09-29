@@ -26,11 +26,7 @@
         <div class="row g-0">
             <nav class="navbar navbar-expand col-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav ml-auto nav-ul">
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" data-scroll-nav="0">Services</a>-->
-<!--    </li>-->
-</ul>
+                    <ul class="navbar-nav ml-auto nav-ul"></ul>
                 </div>
             </nav>
         </div>
@@ -46,26 +42,26 @@
                     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="/read/sdl-tutorial-4-tic-tac-toe/" rel="bookmark">SDL: Как создать игру. Крестики-нолики.</a>
+                <a href="/read/sdl-tutorial-4-tic-tac-toe" rel="bookmark">SDL: Как создать игру. Крестики-нолики.</a>
             </h2>
             <div class="col date text-end float-end">05.05.2012</div>
         </div>
         <div class="entry">
-            <p><img class="oppic" src="https://viktoras.de/img/sdl_logo.png" alt="SDL" />Это вольный перевод и переосмысление статьи, <a href="http://www.sdltutorials.com/sdl-tutorial-tic-tac-toe">SDL Tutorial - Tic Tac Toe</a> за авторством Tim Jones. Готовый код я буду выкладывать на <a href="https://github.com/charnad/SDLTutorial">Github</a>, откуда вы сможете скачать так же ZIP-архив. Если вы увидите ошибку, неточность, или у вас возникнут проблемы - обращайтесь: вы можете оставить комментарий или написать мне на почту, она указана внизу страницы.</p>
+            <p><img class="oppic" src="/img/sdl_logo.png" alt="SDL" />Это вольный перевод и переосмысление статьи, <a href="http://www.sdltutorials.com/sdl-tutorial-tic-tac-toe">SDL Tutorial - Tic Tac Toe</a> за авторством Tim Jones. Готовый код я буду выкладывать на <a href="https://github.com/charnad/SDLTutorial">Github</a>, откуда вы сможете скачать так же ZIP-архив. Если вы увидите ошибку, неточность, или у вас возникнут проблемы - обращайтесь: вы можете оставить комментарий или написать мне на почту, она указана внизу страницы.</p>
 
 <p>До этого момента мы закладывали основу для создания игры. Мы создавали базовую структуру для обработки общих задач, создали специальный класс для обработки событий, и создали класс для работы с поверхностями. В этом уроке мы их объединим для создания игры в крестики-нолики. Не волнуйтесь, все будет довольно просто. Будем использовать код из последней статьи.<!--more--></p>
 
 <p>Первое, что мы надо сделать - спланировать игру. Все мы знаем, что крестики-нолики имеют поле 3x3, где игроки ставят крестики или нолики. Итак, для этого нам будет нужно 3 изображения, одно для игрового поля, одно для X, и одно для О. Нам не нужно многокрестиков или ноликов, потому что мы можем отрисовывать их в программе сколько угодно раз. Наше игровое поле будет размером 600x600, а наши X и O будут 200x200 (1/3 площади).</p>
 
-<p><img src="https://viktoras.de/img/posts/2012-05-07-sdl-tutorial-4/o.png" style="float: left;"/>
-<img src="https://viktoras.de/img/posts/2012-05-07-sdl-tutorial-4/x.png" style="float: left" />
-<img src="https://viktoras.de/img/posts/2012-05-07-sdl-tutorial-4/grid.png"/>
+<p><img src="/img/posts/2012-05-07-sdl-tutorial-4/o.png" style="float: left;"/>
+<img src="/img/posts/2012-05-07-sdl-tutorial-4/x.png" style="float: left" />
+<img src="/img/posts/2012-05-07-sdl-tutorial-4/grid.png"/>
 <br clear="both">
 [<em>Это png изображения, для работы вам нужны bmp. Их можно взять в репозитории на гитхабе, ссылка в начале поста.</em>]</p>
 
 <p>Теперь у нас есть изображения, и нам нужен способ, чтобы загрузить их в нашу программу. Откройте <strong>App.h</strong> и внесите некоторые изменения. Удалите поверхность Test, и добавьте три новых поверхности.</p>
 
-<pre><code class="cpp">#ifndef _APP_H_
+<pre><code class="language-cpp">#ifndef _APP_H_
 #define _APP_H_
 
 #include &lt;SDL.h&gt;
@@ -100,7 +96,7 @@ class App : public Event {
 
 <p>Далее, откройте <strong>App.cpp</strong> и проделайте то же самое, удалите Test и добавьте три новых поверхности. В конструкторе:</p>
 
-<pre><code class="cpp">App::App() {
+<pre><code class="language-cpp">App::App() {
     G = NULL;
     X = NULL;
     O = NULL;
@@ -112,7 +108,7 @@ class App : public Event {
 
 <p>и не забудьте об освобождении ресурсов:</p>
 
-<pre><code class="cpp">void App::Cleanup() {
+<pre><code class="language-cpp">void App::Cleanup() {
     SDL_FreeSurface(G);
     SDL_FreeSurface(X);
     SDL_FreeSurface(O);
@@ -123,7 +119,7 @@ class App : public Event {
 
 <p>Теперь у нас есть три готовые поверхности, давайте загрузим туда изображения. Найдите App::Init(), и внесите изменения: избавимся от поверхности Test (опять), и загрузим три новых изображения. Обратите внимание, что мы изменили размер окна до размеров игрового поля - 600х600.</p>
 
-<pre><code class="cpp">bool App::Init() {
+<pre><code class="language-cpp">bool App::Init() {
     if(SDL_Init(SDL_INIT_EVERYTHING) &lt; 0) {
         return false;
     }
@@ -150,7 +146,7 @@ class App : public Event {
 
 <p>Как вы могли заметить, теперь графические файлы находятся в папке gfx. Со временем, когда игра растет, становится очень удобно держать все изображения в одной папке. Давайте теперь нарисуем игровое поле на экране. Откройте App::Render.cpp и добавьте следующее:</p>
 
-<pre><code class="cpp">void App::Render() {
+<pre><code class="language-cpp">void App::Render() {
     Sprite::Draw(Screen, G, 0, 0);
 
     SDL_Flip(Screen);
@@ -161,7 +157,7 @@ class App : public Event {
 
 <p>Вы наверняка удивляетесь, почему наши X и O на розовом фоне. Для этого, конечно же, есть причина. Мы собираемся реализовать прозрачность у этих поверхностей. По существу, везде, где сейчас розовый цвет, поверхность будет прозрачной. В SDL есть простая функция для этого SDL_SetColorKey. Давайте добавим ее в <strong>Sprite.h</strong>:</p>
 
-<pre><code class="cpp">#ifndef _SPRITE_H_
+<pre><code class="language-cpp">#ifndef _SPRITE_H_
 #define _SPRITE_H_
 
 #include &lt;SDL.h&gt;
@@ -182,7 +178,7 @@ class Sprite {
 
 <p>Теперь, в <strong>Sprite.cpp</strong> добавим ее реализацию:</p>
 
-<pre><code class="cpp">bool Sprite::Transparent(SDL_Surface* Surface, int R, int G, int B) {
+<pre><code class="language-cpp">bool Sprite::Transparent(SDL_Surface* Surface, int R, int G, int B) {
     if(Surface == NULL) {
         return false;
     }
@@ -199,7 +195,7 @@ class Sprite {
 
 <p>Давайте теперь применим эту новую функцию к нашим поверхностям, откройте App::Init и внесите следующие изменения:</p>
 
-<pre><code class="cpp">bool App::Init() {
+<pre><code class="language-cpp">bool App::Init() {
     if(SDL_Init(SDL_INIT_EVERYTHING) &lt; 0) {
         return false;
     }
@@ -233,7 +229,7 @@ class Sprite {
 
 <p>Теперь добавим массив и перечисление в <strong>App.h</strong>:</p>
 
-<pre><code class="cpp">#ifndef _APP_H_
+<pre><code class="language-cpp">#ifndef _APP_H_
 #define _APP_H_
 
 #include &lt;SDL.h&gt;
@@ -278,13 +274,13 @@ class App : public Event {
 
 <p>В <strong>App.h</strong>:</p>
 
-<pre><code class="cpp">public:
+<pre><code class="language-cpp">public:
     void Reset();
 </code></pre>
 
 <p>В <strong>App.cpp</strong>:</p>
 
-<pre><code class="cpp">void App::Reset() {
+<pre><code class="language-cpp">void App::Reset() {
     for(int i = 0;i &lt; 9;i++) {
         Grid[i] = GRID_TYPE_NONE;
     }
@@ -322,12 +318,12 @@ bool App::Init() {
 
 <p>Следующее, что мы должны сделать, это функция размещения X и O на экране. Давайте ее создадим. Откройте опять <strong>App.h</strong> и добавьте функцию ниже Reset:</p>
 
-<pre><code class="cpp">void SetCell(int ID, int Type);
+<pre><code class="language-cpp">void SetCell(int ID, int Type);
 </code></pre>
 
 <p>И в <strong>App.cpp</strong>:</p>
 
-<pre><code class="cpp">void App::SetCell(int ID, int Type) {
+<pre><code class="language-cpp">void App::SetCell(int ID, int Type) {
     if(ID &lt; 0 || ID &gt;= 9) return;
     if(Type &lt; 0 || Type &gt; GRID_TYPE_O) return;
 
@@ -337,7 +333,7 @@ bool App::Init() {
 
 <p>Эта функция принимает два аргумента: во-первых, id изменяемой ячейки, а во-вторых тип, в который мы ее устанавливаем. У нас есть два условия, во-первых, убедимся, что мы не выходим за границы массива (иначе наша программа бы упала), а во-вторых, убедимся, что мы задаем правильный тип. Теперь давайте сделаем так, чтобы X и O отрисовывались на экране. Добавим следующий код в <strong>App::Render</strong>:</p>
 
-<pre><code class="cpp">void App::Render() {
+<pre><code class="language-cpp">void App::Render() {
     Sprite::Draw(Screen, G, 0, 0);
 
     for(int i = 0;i &lt; 9;i++) {
@@ -360,14 +356,14 @@ bool App::Init() {
 
 <p>Наконец, нам нужно обрабатывать пользовательские действия. Для этого мы будем отлавливать события мышки. Когда пользователь нажимает на ячейку будем ставить в нее X или O. Переопределим один из методов Event для этого. Откройте <strong>App.h</strong> и добавьте функцию и переменную, про нее я скажу чуть позже:</p>
 
-<pre><code class="cpp">int CurrentPlayer;
+<pre><code class="language-cpp">int CurrentPlayer;
 
 void OnLButtonDown(int mX, int mY);
 </code></pre>
 
 <p>И в <strong>App.cpp</strong>:</p>
 
-<pre><code class="cpp">void App::OnLButtonDown(int mX, int mY) {
+<pre><code class="language-cpp">void App::OnLButtonDown(int mX, int mY) {
     int ID = mX / 200;
     ID = ID + ((mY / 200) * 3);
 
@@ -387,7 +383,7 @@ void OnLButtonDown(int mX, int mY);
 
 <p>Сначала мы делаем обратное преобразование, из координат в ID. Затем проверяем, что клетка еще не занята, иначе выходим из функции. Потом проверяем, чей сейчас ход, ставим соответствующую фигуру и передаем ход другому игроку. Как раз CurrentPlayer и говорит нам о том, чей сейчас ход. Кстати, ее надо инициализировать в конструкторе в <strong>App.cpp</strong>:</p>
 
-<pre><code class="cpp">App::App() {
+<pre><code class="language-cpp">App::App() {
     CurrentPlayer = 0;
 
     G = NULL;
@@ -405,7 +401,6 @@ void OnLButtonDown(int mX, int mY);
 <p>Попробуйте дальше сделать самостоятельно. У нас есть прочный фундамент для нашей игры. Попробуйте добавить "X победил", "О победил" и "Ничья" в конце каждой игры (нужны дополнительные изображения). Подумайте, как вы собираетесь определять, кто выиграл. Попробуйте добавить способ сбросить игру после того, как она закончилась. Если хотите, можете даже попробовать добавить некий искуственный интеллект, который будет играть против пользователей. Или, если вам и этого мало, попробуйте добавить возможность играть игрок против игрока, или игрока против компьютера.</p>
 
 <p>Когда у вас будет твердое понимание, как все работает в этой статье - вы можете перейти к следующей, для изучения покадровой анимации.</p>
-
         </div>
 
         <div class="post-license text-center">

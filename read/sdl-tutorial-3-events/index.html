@@ -26,11 +26,7 @@
         <div class="row g-0">
             <nav class="navbar navbar-expand col-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav ml-auto nav-ul">
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" data-scroll-nav="0">Services</a>-->
-<!--    </li>-->
-</ul>
+                    <ul class="navbar-nav ml-auto nav-ul"></ul>
                 </div>
             </nav>
         </div>
@@ -46,12 +42,12 @@
                     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="/read/sdl-tutorial-3-events/" rel="bookmark">SDL: Как создать игру. События.</a>
+                <a href="/read/sdl-tutorial-3-events" rel="bookmark">SDL: Как создать игру. События.</a>
             </h2>
             <div class="col date text-end float-end">02.05.2012</div>
         </div>
         <div class="entry">
-            <p><img class="oppic" src="https://viktoras.de/img/sdl_logo.png" alt="SDL" />Это вольный перевод и переосмысление статьи, <a href="http://www.sdltutorials.com/sdl-events">SDL Events</a> за авторством Tim Jones. Готовый код я буду выкладывать на <a href="https://github.com/charnad/SDLTutorial">Github</a>, откуда вы сможете скачать так же ZIP-архив. Если вы увидите ошибку, неточность, или у вас возникнут проблемы - обращайтесь: вы можете оставить комментарий или написать мне на почту, она указана внизу страницы.</p>
+            <p><img class="oppic" src="/img/sdl_logo.png" alt="SDL" />Это вольный перевод и переосмысление статьи, <a href="http://www.sdltutorials.com/sdl-events">SDL Events</a> за авторством Tim Jones. Готовый код я буду выкладывать на <a href="https://github.com/charnad/SDLTutorial">Github</a>, откуда вы сможете скачать так же ZIP-архив. Если вы увидите ошибку, неточность, или у вас возникнут проблемы - обращайтесь: вы можете оставить комментарий или написать мне на почту, она указана внизу страницы.</p>
 
 <p>Говоря об основах разработки игр нельзя не упомянуть о том, что называется событиями (Events). Все видеоигры, от Pong до очень сложных игр для ПК и консоли, используют события для взаимодействия с игроком. Эти события могут поступать от клавиатуры, мыши, джойстика, геймпада, и так далее, даже из операционной системы. Важно понять, как работают события, если мы хотим позволить пользователю взаимодействовать с игрой. Мы уже использовали события, но только для закрытия нашего окна, теперь мы посмотрим, как получать события от пользователя.</p>
 
@@ -59,7 +55,7 @@
 
 <p>Откройте <strong>Event.h</strong> и добавьте следующий код:</p>
 
-<pre><code class="cpp">#ifndef _EVENT_H_
+<pre><code class="language-cpp">#ifndef _EVENT_H_
 #define _EVENT_H_
 
 #include &lt;SDL.h&gt;
@@ -101,7 +97,7 @@ class Event {
 
 <p>Немаленький класс, да? Так, а теперь откройте <strong>Event.cpp</strong> и добавьте следующий код:</p>
 
-<pre><code class="cpp">#include "Event.h"
+<pre><code class="language-cpp">#include "Event.h"
 
 Event::Event() {}
 Event::~Event() {}
@@ -268,7 +264,7 @@ void Event::OnUser(Uint8 type, int code, void* data1, void* data2) {}
 
 <p>Теперь, когда с этим разобрались, перейдет к <strong>App.h</strong> и подключим наш новый класс:</p>
 
-<pre><code class="cpp">#ifndef _APP_H_
+<pre><code class="language-cpp">#ifndef _APP_H_
 #define _APP_H_
 
 #include &lt;SDL.h&gt;
@@ -298,14 +294,14 @@ class App : public Event {
 
 <p>Все должно хорошо скомпилироваться. Теперь надо связать поступающие события с нашим классом. Найдите App::Event() и измените функцию вот так:</p>
 
-<pre><code class="cpp">void App::Event(SDL_Event* Evt) {
+<pre><code class="language-cpp">void App::Event(SDL_Event* Evt) {
     Event::Handle(Evt);
 }
 </code></pre>
 
 <p>Мы передаем событие в наш класса, теперь он будет заботиться о правильном вызовов функций. Теперь, когда мы хотим использовать событие, мы должны переопределить функцию. Так как мы избавились от проверки события SDL_Quit, давайте использовать вместо этого метод класса. Откройте <strong>App.h</strong>, и добавьте следующие функции:</p>
 
-<pre><code class="cpp">#ifndef _APP_H_
+<pre><code class="language-cpp">#ifndef _APP_H_
 #define _APP_H_
 
 #include &lt;SDL.h&gt;
@@ -336,7 +332,7 @@ class App : public Event {
 
 <p>Функция Exit() будет обрабатывать событие SDL_Quit. У нас есть прототип, позволяющий определить, что он делает, теперь добавим реализацию. Откройте <strong>App.cpp</strong> и добавьте следующее:</p>
 
-<pre><code class="cpp">void App::Exit() {
+<pre><code class="language-cpp">void App::Exit() {
     Running = false;
 }
 </code></pre>
@@ -344,7 +340,6 @@ class App : public Event {
 <p>Перекомпилируйте и попробуйте запустить. Программа должна закрываться по крестику как и раньше. Я рекомендую вам ознакомиться с несколькими другими событиями. В дальнейшем мы будем использовать некоторые из них в нашей игре.</p>
 
 <p>Перейти на более чем на следующем уроке, чтобы взглянуть на создание нашей первой игре, крестики-нолики./strong</p>
-
         </div>
 
         <div class="post-license text-center">

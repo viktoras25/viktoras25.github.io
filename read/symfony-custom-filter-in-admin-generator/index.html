@@ -26,11 +26,7 @@
         <div class="row g-0">
             <nav class="navbar navbar-expand col-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav ml-auto nav-ul">
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" data-scroll-nav="0">Services</a>-->
-<!--    </li>-->
-</ul>
+                    <ul class="navbar-nav ml-auto nav-ul"></ul>
                 </div>
             </nav>
         </div>
@@ -46,14 +42,14 @@
                     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="/read/symfony-custom-filter-in-admin-generator/" rel="bookmark">Symfony: свой фильтр в admin generator</a>
+                <a href="/read/symfony-custom-filter-in-admin-generator" rel="bookmark">Symfony: свой фильтр в admin generator</a>
             </h2>
             <div class="col date text-end float-end">08.09.2010</div>
         </div>
         <div class="entry">
-            <p><img class="oppic" src="https://viktoras.de/img/symfony_logo.gif"/>Кратко о том, как сделать фильтр для админ генератора. В моем проекте используется Doctrine с поведением NestedSet, и фильтр мне нужен был по родительскому полю. Точнее, показать потомков выбранного элемента. Для этого я пошел в папку /lib/filters и открыл файл фильтров для нужной модели. Там будем править метод configure. В моем случае дело происходит в плагине, поэтому метод, который я буду править называется setupInheritance.<!--more--></p>
+            <p><img class="oppic" src="/img/symfony_logo.gif"/>Кратко о том, как сделать фильтр для админ генератора. В моем проекте используется Doctrine с поведением NestedSet, и фильтр мне нужен был по родительскому полю. Точнее, показать потомков выбранного элемента. Для этого я пошел в папку /lib/filters и открыл файл фильтров для нужной модели. Там будем править метод configure. В моем случае дело происходит в плагине, поэтому метод, который я буду править называется setupInheritance.<!--more--></p>
 
-<pre><code class="php">public function  setupInheritance() {
+<pre><code class="language-php">public function  setupInheritance() {
     parent::setupInheritance();
 
     $this-&gt;widgetSchema['parent'] = new sfWidgetFormDoctrineChoiceNestedSet(array(
@@ -69,7 +65,7 @@
 
 <p>Добавили виджет и валидатор. sfWidgetFormDoctrineChoiceNestedSet это простой DoctrineChoice, в котором есть отступы и сортировка в соответствии с иерархией в NestedSet. Теперь наш виджет виден в форме, правда ни на что пока не влияет. Чтобы на что-то влиять, нам надо добавить его в список полей фильтра в том же файле.</p>
 
-<pre><code class="php">public function getFields() {
+<pre><code class="language-php">public function getFields() {
     $fields = parent::getFields();
     $fields['parent'] = 'NestedNode';
 
@@ -81,7 +77,7 @@
 
 <p>Кстати говоря, если в данный момент посмотреть на наш проект - нам выбросят исключение, где будет сказано как надо назвать метод, который будет обрабатывать наше поле. В моем случае это addParentColumnQuery. Формат названия функции, скорее всего такой: add_COLUMN_NAME_ColumnQuery. А собственно вот и она сама:</p>
 
-<pre><code class="php">public function addParentColumnQuery($q, $element, $value) {
+<pre><code class="language-php">public function addParentColumnQuery($q, $element, $value) {
     $parent = Doctrine::getTable('MODEL_NAME')-&gt;findOneById($value);
     return $q-&gt;andWhere('lft &gt; ?', $parent-&gt;getLft())-&gt;andWhere('rgt &lt; ?', $parent-&gt;getRgt());
 }
@@ -90,7 +86,6 @@
 <p>Получаем Doctrine_Query в качестве параметра $q, добавляем свои условия и возвращаем. Все легко и просто. Наздоровье :)</p>
 
 <p>Референс: <a href="http://robert-says.com/2010/03/symfony-how-to-add-a-custom-filter-for-the-admin-listing">http://robert-says.com/2010/03/symfony-how-to-add-a-custom-filter-for-the-admin-listing</a></p>
-
         </div>
 
         <div class="post-license text-center">

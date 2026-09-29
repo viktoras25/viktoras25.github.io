@@ -26,11 +26,7 @@
         <div class="row g-0">
             <nav class="navbar navbar-expand col-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav ml-auto nav-ul">
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" data-scroll-nav="0">Services</a>-->
-<!--    </li>-->
-</ul>
+                    <ul class="navbar-nav ml-auto nav-ul"></ul>
                 </div>
             </nav>
         </div>
@@ -46,7 +42,7 @@
                     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="/read/project-euler-502/" rel="bookmark">Project Euler 502</a>
+                <a href="/read/project-euler-502" rel="bookmark">Project Euler 502</a>
             </h2>
             <div class="col date text-end float-end">11.04.2015</div>
         </div>
@@ -64,7 +60,7 @@ A castle consists of levels, each level consists of blocks and spaces between th
 
 <p>So this is basically it, I start with a base level, add numbers from 0 to (2 ^ W) - 1, if they AND with the previous level, and after all I calculate amonut of blocks by grouping them.</p>
 
-<pre><code class="haskell">import Data.List
+<pre><code class="language-haskell">import Data.List
 import Data.Bits
 
 {-|
@@ -102,7 +98,6 @@ countBlocks = genericLength . (filter ((== 1).head)) . group . binary
 </code></pre>
 
 <p>This is by no means an optimal solution, I couldn't even compute a 10x13 grid from the simpler example within a reasonable amonut of time. The biggest so far was a 9x7 grid for 28+ millions of castles.</p>
-
         </div>
 
         <div class="post-license text-center">

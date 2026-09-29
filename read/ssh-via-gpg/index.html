@@ -26,11 +26,7 @@
         <div class="row g-0">
             <nav class="navbar navbar-expand col-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav ml-auto nav-ul">
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" data-scroll-nav="0">Services</a>-->
-<!--    </li>-->
-</ul>
+                    <ul class="navbar-nav ml-auto nav-ul"></ul>
                 </div>
             </nav>
         </div>
@@ -46,14 +42,14 @@
                     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="/read/ssh-via-gpg/" rel="bookmark">SSH via GPG</a>
+                <a href="/read/ssh-via-gpg" rel="bookmark">SSH via GPG</a>
             </h2>
             <div class="col date text-end float-end">20.08.2023</div>
         </div>
         <div class="entry">
             <p>This post is a summary of how I use SSH via GPG and backup the keys. I'm writing it down for myself and to share with friends and colleagues. My setup is not ultimately secure, but it's secure and practical enough for me. At every step you can choose to harden the configuration even more and add hardware tokens like Yubikey. My motivation is having to deal with one keychain only and being able to have an offline hardcopy (printable QR code) backup, because all electronics can go bad when you least expect it.</p>
 
-<h3 id="preparations">Preparations</h3>
+<h3>Preparations</h3>
 
 <p>I used this article https://github.com/drduh/YubiKey-Guide as a source for most of the information here.</p>
 
@@ -63,7 +59,7 @@
 
 <p>An absolute must is to set a secure passphrase for a key. Again, internet recommends generating a passphrase using e.g. diceware to exclude any possible electronic traces. I don't do it, even thought it's fun. Just remember, if your key does get stolen, this passphrase will be the last and only level of your defense. We are going to backup the private key as a QR code, so a copy is theoretically obtainable.</p>
 
-<h3 id="creating-and-enabling-the-key">Creating and enabling the key</h3>
+<h3>Creating and enabling the key</h3>
 
 <pre><code>gpg --full-generate-key --expert
 gpg --list-keys
@@ -92,13 +88,12 @@ ssh-add -L
 <pre><code>ssh -T git@github.com
 </code></pre>
 
-<h3 id="backup">Backup</h3>
+<h3>Backup</h3>
 
 <p>This part is largely inspired by https://wiki.archlinux.org/title/Paperkey.</p>
 
 <pre><code>gpg --export-secret-key KEY_ID | qrencode -s10 --output test-qr.png
 </code></pre>
-
         </div>
 
         <div class="post-license text-center">

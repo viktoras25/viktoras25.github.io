@@ -26,11 +26,7 @@
         <div class="row g-0">
             <nav class="navbar navbar-expand col-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav ml-auto nav-ul">
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" data-scroll-nav="0">Services</a>-->
-<!--    </li>-->
-</ul>
+                    <ul class="navbar-nav ml-auto nav-ul"></ul>
                 </div>
             </nav>
         </div>
@@ -46,22 +42,22 @@
                     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="/read/sdl-tutorial-2-coordinates-and-blitting/" rel="bookmark">SDL: Как создать игру. Координаты и блиттинг.</a>
+                <a href="/read/sdl-tutorial-2-coordinates-and-blitting" rel="bookmark">SDL: Как создать игру. Координаты и блиттинг.</a>
             </h2>
             <div class="col date text-end float-end">01.05.2012</div>
         </div>
         <div class="entry">
-            <p><img class="oppic" src="https://viktoras.de/img/sdl_logo.png" alt="SDL" />Это вольный перевод и переосмысление статьи, <a href="http://www.sdltutorials.com/sdl-coordinates-and-blitting">SDL Coordinates and Bliting</a> за авторством Tim Jones. Готовый код я буду выкладывать на <a href="https://github.com/charnad/SDLTutorial">Github</a>, откуда вы сможете скачать так же ZIP-архив. Если вы увидите ошибку, неточность, или у вас возникнут проблемы - обращайтесь: вы можете оставить комментарий или написать мне на почту, она указана внизу страницы.</p>
+            <p><img class="oppic" src="/img/sdl_logo.png" alt="SDL" />Это вольный перевод и переосмысление статьи, <a href="http://www.sdltutorials.com/sdl-coordinates-and-blitting">SDL Coordinates and Bliting</a> за авторством Tim Jones. Готовый код я буду выкладывать на <a href="https://github.com/charnad/SDLTutorial">Github</a>, откуда вы сможете скачать так же ZIP-архив. Если вы увидите ошибку, неточность, или у вас возникнут проблемы - обращайтесь: вы можете оставить комментарий или написать мне на почту, она указана внизу страницы.</p>
 
-<p>Используя <a href="https://viktoras.de/blog/sdl-tutorial-1-basics/">первую статью</a>, как базу, углубимся в мир поверхностей SDL. Я пытался донести до вас мысль, что SDL поверхности - это в основном изображения, хранящиеся в памяти. Представьте что, у нас есть пустая поверхность размером 320x240 пикселей. Если добавить к ней систему SDL координат, то получится что-то вроде этого:</p>
+<p>Используя <a href="/read/sdl-tutorial-1-basics/">первую статью</a>, как базу, углубимся в мир поверхностей SDL. Я пытался донести до вас мысль, что SDL поверхности - это в основном изображения, хранящиеся в памяти. Представьте что, у нас есть пустая поверхность размером 320x240 пикселей. Если добавить к ней систему SDL координат, то получится что-то вроде этого:</p>
 
-<p><img src="https://viktoras.de/img/posts/2012-05-01-sdl-tutorial-2/coords.jpg"></p>
+<p><img src="/img/posts/2012-05-01-sdl-tutorial-2/coords.jpg"></p>
 
 <p>Эта система координат отличается, от обычной. Обратите внимание, что координата Y увеличивается вниз, а координата X увеличивается вправо. Это важно понимать, чтобы правильно рисовать изображения на экране.<!--more--></p>
 
 <p>Поскольку у нас уже есть основная поверхность (Screen), нам нужен способ, чтобы рисовать на ней. Этот процесс называется блиттинг [<em>Blitting - Перенос битовых блоков</em>], когда мы в общем переносим одно изображение на другое. Но прежде чем мы сможем это сделать, мы должны загрузить эти изображения в память. SDL предлагает простую функцию для этого - SDL_LoadBMP. Примерный код может выглядеть следующим образом:</p>
 
-<pre><code class="cpp">SDL_Surface* TmpSurface;
+<pre><code class="language-cpp">SDL_Surface* TmpSurface;
 
 if((TmpSurface = SDL_LoadBMP("mypicture.bmp")) == NULL) {
     //Error!
@@ -72,7 +68,7 @@ if((TmpSurface = SDL_LoadBMP("mypicture.bmp")) == NULL) {
 
 <p>Давайте этот процесс завернем класс. Возьмем код из предыдущей статьи за основу и добавим два новых файла: <strong>Sprite.h</strong> и <strong>Sprite.cpp</strong>. Откройте <strong>Sprite.h</strong> и добавьте следующее:</p>
 
-<pre><code class="cpp">#ifndef _SPRITE_H_
+<pre><code class="language-cpp">#ifndef _SPRITE_H_
 #define _SPRITE_H_
 
 #include &lt;SDL.h&gt;
@@ -89,7 +85,7 @@ class Sprite {
 
 <p>Мы создали простую статическую функцию Load, которая будет загружать файл в поверхность. Теперь откроем <strong>Sprite.cpp</strong>:</p>
 
-<pre><code class="cpp">#include "Sprite.h"
+<pre><code class="language-cpp">#include "Sprite.h"
 
 Sprite::Sprite() {}
 
@@ -112,7 +108,7 @@ SDL_Surface* Sprite::Load(const char* File) {
 
 <p>Теперь у нас есть способ загрузки поверхностей в памяти, теперь же нужен способ отображать их поверх других поверхностей. Как и в случае с загрузкой изображений, SDL предлагает функцию для блиттинга: SDL_BlitSurface. Она не такая простая как SDL_LoadBMP, но все же достаточно простая. Откроем <strong>Sprite.h</strong> и добавим следующие прототипы функций:</p>
 
-<pre><code class="cpp">#ifndef _SPRITE_H_
+<pre><code class="language-cpp">#ifndef _SPRITE_H_
 #define _SPRITE_H_
 
 #include &lt;SDL.h&gt;
@@ -130,7 +126,7 @@ class Sprite {
 
 <p>Теперь откройте <strong>Sprite.cpp</strong>, и добавьте следующее:</p>
 
-<pre><code class="cpp">#include "Sprite.h"
+<pre><code class="language-cpp">#include "Sprite.h"
 
 Sprite::Sprite() {
 }
@@ -170,7 +166,7 @@ bool Sprite::Draw(SDL_Surface* Dest, SDL_Surface* Src, int X, int Y) {
 
 <p>Теперь, чтобы убедиться, что все это работает, давайте создадим тестовую поверхность. Откройте <strong>App.h</strong>, и создайте новую поверхность, и подключите недавно созданный <strong>Sprite.h</strong>:</p>
 
-<pre><code class="cpp">#ifndef _APP_H_
+<pre><code class="language-cpp">#ifndef _APP_H_
 #define _APP_H_
 
 #include &lt;SDL.h&gt;
@@ -199,7 +195,7 @@ class App {
 
 <p>Не забудьте инициализировать поверхность значением NULL в конструкторе:</p>
 
-<pre><code class="cpp">App::App() {
+<pre><code class="language-cpp">App::App() {
     Test = NULL;
     Screen = NULL;
     Running = true;
@@ -208,7 +204,7 @@ class App {
 
 <p>И так же не забудьте "прибраться" за собой:</p>
 
-<pre><code class="cpp">void App::Cleanup() {
+<pre><code class="language-cpp">void App::Cleanup() {
     SDL_FreeSurface(Test);
     SDL_FreeSurface(Screen);
     SDL_Quit();
@@ -217,7 +213,7 @@ class App {
 
 <p>Давайте теперь загрузим изображение. Перейдите к функции App::Init(), добавьте код:</p>
 
-<pre><code class="cpp"><br />bool App::Init() {
+<pre><code class="language-cpp"><br />bool App::Init() {
     if(SDL_Init(SDL_INIT_EVERYTHING) &lt; 0) {
         return false;
     }
@@ -236,7 +232,7 @@ class App {
 
 <p>Не забудьте заменить "image.bmp" реальным изображением, которое у вас есть. Если нету - откройте MSPaint, что-нибудь нарисуйте, и сохраните в той же папке, где будет ваш исполняемый файл. Теперь у нас есть загруженное изображение, которое можно нарисовать. Найдите App::Render и добавьте следующее:</p>
 
-<pre><code class="cpp">void App::Render() {
+<pre><code class="language-cpp">void App::Render() {
     Sprite::Draw(Screen, Test, 0, 0);
 
     SDL_Flip(Screen);
@@ -247,15 +243,15 @@ class App {
 
 <p>Скомпилируйте код и убедитесь, что все работает правильно. Вы должны увидеть изображение в верхнем левом углу экрана.  Если да, то поздравляю, вы на один шаг ближе к самой игре. Если нет, убедитесь, что ваш image.bmp находится в той же папке, что и исполняемый файл. Кроме того, убедитесь, что это действительно bitmap файл.</p>
 
-<p><img src="https://viktoras.de/img/posts/2012-05-01-sdl-tutorial-2/ss1.jpg"></p>
+<p><img src="/img/posts/2012-05-01-sdl-tutorial-2/ss1.jpg"></p>
 
 <p>Теперь давайте продвинемся немного дальше. Хотя это круто уметь рисовать изображение на экране, часто нам нужна только его часть. Возьмем, к примеру, набор тайлов (tileset):</p>
 
-<p><img src="https://viktoras.de/img/posts/2012-05-01-sdl-tutorial-2/tileset.png"></p>
+<p><img src="/img/posts/2012-05-01-sdl-tutorial-2/tileset.png"></p>
 
 <p>Хотя это одно изображение, мы хотим нарисовать отдельную его часть. Открытие еще раз <strong>Sprite.h</strong> и добавьте следующий код:</p>
 
-<pre><code class="cpp">#ifndef _SPRITE_H_
+<pre><code class="language-cpp">#ifndef _SPRITE_H_
 #define _SPRITE_H_
 
 #include &lt;SDL.h&gt;
@@ -274,7 +270,7 @@ class Sprite {
 
 <p>Теперь в <strong>Sprite.cpp</strong><span style="color: red;"> (Внимание, мы добавляем еще одну функцию Draw, мы не заменяем первую)</span>:</p>
 
-<pre><code class="cpp">bool Sprite::Draw(SDL_Surface* Dest, SDL_Surface* Src, int X, int Y, int X2, int Y2, int W, int H) {
+<pre><code class="language-cpp">bool Sprite::Draw(SDL_Surface* Dest, SDL_Surface* Src, int X, int Y, int X2, int Y2, int W, int H) {
     if(Dest == NULL || Src == NULL) {
         return false;
     }
@@ -299,11 +295,11 @@ class Sprite {
 
 <p>Обратите внимание, что это в основном точно такая же функция, как и первыая, за исключением того, мы добавили еще один SDL_Rect. Этот SDL_Rect прямоугольник определяет, какие пикселы из исходного изображения скопировать в итоговое. Если, например, указаны параметры 0, 0, 50, 50, то отрисовано было бы лишь левая верхняя часть поверхности (квадрат размером 50х50).</p>
 
-<p><img src="https://viktoras.de/img/posts/2012-05-01-sdl-tutorial-2/draw2.jpg"></p>
+<p><img src="/img/posts/2012-05-01-sdl-tutorial-2/draw2.jpg"></p>
 
 <p>Давайте проверим как это работает, найдите App::Render(), и добавьте следующее:</p>
 
-<pre><code class="cpp">void App::Render() {
+<pre><code class="language-cpp">void App::Render() {
     Sprite::Draw(Screen, Test, 0, 0);
     Sprite::Draw(Screen, Test, 70, 110, 90, 90, 50, 50);
 
@@ -311,10 +307,9 @@ class Sprite {
 }
 </code></pre>
 
-<p><img src="https://viktoras.de/img/posts/2012-05-01-sdl-tutorial-2/ss2.jpg" alt="coordinates"></p>
+<p><img src="/img/posts/2012-05-01-sdl-tutorial-2/ss2.jpg" alt="coordinates"></p>
 
 <p>Должно получиться, что ваше изображение отображается по координатам 70, 110 и видна только его часть. Надо обратить особое внимание на то, как эти функции работают, и как устроена система SDL координат, мы будем еще не раз это использовать.</p>
-
         </div>
 
         <div class="post-license text-center">

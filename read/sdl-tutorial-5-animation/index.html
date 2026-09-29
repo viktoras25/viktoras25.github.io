@@ -26,11 +26,7 @@
         <div class="row g-0">
             <nav class="navbar navbar-expand col-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav ml-auto nav-ul">
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" data-scroll-nav="0">Services</a>-->
-<!--    </li>-->
-</ul>
+                    <ul class="navbar-nav ml-auto nav-ul"></ul>
                 </div>
             </nav>
         </div>
@@ -46,12 +42,12 @@
                     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="/read/sdl-tutorial-5-animation/" rel="bookmark">SDL: Как создать игру. Анимация.</a>
+                <a href="/read/sdl-tutorial-5-animation" rel="bookmark">SDL: Как создать игру. Анимация.</a>
             </h2>
             <div class="col date text-end float-end">07.05.2012</div>
         </div>
         <div class="entry">
-            <p><img class="oppic" src="https://viktoras.de/img/sdl_logo.png" alt="SDL" />Это вольный перевод и переосмысление статьи, <a href="http://www.sdltutorials.com/sdl-animation">SDL Tutorial - Animation</a> за авторством Tim Jones. Готовый код я буду выкладывать на <a href="https://github.com/charnad/SDLTutorial">Github</a>, откуда вы сможете скачать так же ZIP-архив. Если вы увидите ошибку, неточность, или у вас возникнут проблемы - обращайтесь: вы можете оставить комментарий или написать мне на почту, она указана внизу страницы.</p>
+            <p><img class="oppic" src="/img/sdl_logo.png" alt="SDL" />Это вольный перевод и переосмысление статьи, <a href="http://www.sdltutorials.com/sdl-animation">SDL Tutorial - Animation</a> за авторством Tim Jones. Готовый код я буду выкладывать на <a href="https://github.com/charnad/SDLTutorial">Github</a>, откуда вы сможете скачать так же ZIP-архив. Если вы увидите ошибку, неточность, или у вас возникнут проблемы - обращайтесь: вы можете оставить комментарий или написать мне на почту, она указана внизу страницы.</p>
 
 <p>В последней статье мы создали прототип игры в крестики-нолики. Надеюсь, многие из вас смогли заставить его работать. Если нет, то не волнуйтесь, рано или поздно у вас все получится. В этой статье мы собираемся научиться делать анимацию с помощью SDL. Как и прежде, мы будем код предыдущих статей SDL, за исключением кода из Крестиков-ноликов. Я отменил почти все изменения, сделанные в той статье, оставил лишь Transparent функцию для класса Sprite.</p>
 
@@ -59,12 +55,12 @@
 
 <p>Создайте два новых файла с названиями <strong>Animation.h</strong> и <strong>Animation.cpp</strong>. В будущем, наш Entity-класс будет наследовать этот класс, но пока что мы будем пользоваться им напрямую. Давайте сразу подключим файл в <strong>App.h</strong>:</p>
 
-<pre><code class="cpp">#include "Animation.h"
+<pre><code class="language-cpp">#include "Animation.h"
 </code></pre>
 
 <p>Теперь откройте <strong>Animation.h</strong> и добавьте базовую структуру класса в файл:</p>
 
-<pre><code class="cpp">#ifndef _ANIMATION_H_
+<pre><code class="language-cpp">#ifndef _ANIMATION_H_
 #define _ANIMATION_H_
 
 #include &lt;SDL.h&gt;
@@ -96,7 +92,7 @@ class Animation {
 
 <p>Теперь откройте <strong>Animation.cpp</strong> и добавьте следующий код:</p>
 
-<pre><code class="cpp">#include "Animation.h"
+<pre><code class="language-cpp">#include "Animation.h"
 
 Animation::Animation() {
     CurrentFrame    = 0;
@@ -152,24 +148,24 @@ int Animation::GetCurrentFrame() {
 
 <p>Теперь объясню что же делает этот класс. Существует один основной элемент анимации, который мы должны обрабатывать - текущий кадр анимации. Возьмите изображение Йоши ниже (мы будем использовать его в этой статье). Вы увидите, у нас есть 8 кадров Йоши на одном изображении. Каждый кадр будет пронумерован 0, 1, 2 сверху вниз.</p>
 
-<p><img src="https://viktoras.de/img/posts/2012-05-07-sdl-tutorial-5/yoshi.bmp"></p>
+<p><img src="/img/posts/2012-05-07-sdl-tutorial-5/yoshi.bmp"></p>
 
 <p>Помните, статью про координаты, где мы создаели функцию, которая отрисовывает часть изображения? И если взять эту функцию в сочетании с номером кадра анимации, вуаля!</p>
 
 <p>Первая переменная, CurrentFrame, это текущий кадр анимации, который мы будем рисовать на экране. Независимо от того, какое у него значение, он будет определять, какую часть поверхности мы будем рисовать на экране. Поэтому, когда мы вызываем функцию рисования, мы делаем что-то вроде этого:</p>
 
-<pre><code class="cpp">Sprite::Draw(Screen, Image, 0, 0, 0, Anim_Yoshi.GetCurrentFrame() * 64, 64, 64);
+<pre><code class="language-cpp">Sprite::Draw(Screen, Image, 0, 0, 0, Anim_Yoshi.GetCurrentFrame() * 64, 64, 64);
 </code></pre>
 
 <p>Так как наш Йоши размером 64 х 64 пикселей, столько мы и захватим для вывода, это же и является нашим кадром анимации. Посмотрите на иллюстрацию ниже.</p>
 
-<p><img src="https://viktoras.de/img/posts/2012-05-07-sdl-tutorial-5/Animation.jpg"/></p>
+<p><img src="/img/posts/2012-05-07-sdl-tutorial-5/Animation.jpg"/></p>
 
 <p>Когда CurrentFrame увеличивается на 1, мы прыгаем вниз на 64 пикселя (высота кадра Yoshi), и рисуем этот кадр.</p>
 
 <p>Другая часть этого класса нужна нам для того, чтобы определять, сколько кадров в анимации - MaxFrames. Наконец важно так же знать, сколько кадров в секунду, или, скорее, как быстро будет меняться анимированное изображение. Для этого мы используем вот этот кусок кода в функции Animate().</p>
 
-<pre><code class="cpp">if(OldTime + FrameRate &gt; SDL_GetTicks()) {
+<pre><code class="language-cpp">if(OldTime + FrameRate &gt; SDL_GetTicks()) {
     return;
 }
 </code></pre>
@@ -184,23 +180,23 @@ int Animation::GetCurrentFrame() {
 
 <p>Теперь, когда мы обо всем позаботились, используем этот класс. Создайте новый объект типа Animation в <strong>App.h</strong>:</p>
 
-<pre><code class="cpp">Animation      Anim_Yoshi;
+<pre><code class="language-cpp">Animation      Anim_Yoshi;
 </code></pre>
 
 <p>Теперь, давайте установиv MaxFrames, добавьте в App::Init():</p>
 
-<pre><code class="cpp">Sprite::Transparent(Test, 255, 0, 255);
+<pre><code class="language-cpp">Sprite::Transparent(Test, 255, 0, 255);
 Anim_Yoshi.MaxFrames = 8;
 </code></pre>
 
 <p>И теперь, чтобы анимация двигалась в App::Loop():</p>
 
-<pre><code class="cpp">Anim_Yoshi.Animate();
+<pre><code class="language-cpp">Anim_Yoshi.Animate();
 </code></pre>
 
 <p>И наконец, нарисуем на экране App::Render():</p>
 
-<pre><code class="cpp">void App::Render() {
+<pre><code class="language-cpp">void App::Render() {
     SDL_FillRect(Screen, NULL, 0x000000);
     Sprite::Draw(Screen, Test, 290, 220, 0, Anim_Yoshi.GetCurrentFrame() * 64, 64, 64);
 
@@ -209,7 +205,6 @@ Anim_Yoshi.MaxFrames = 8;
 </code></pre>
 
 <p>Теперь скомпилируйте и смотрить как работает наша анимация! SDL_FillRect заполняет указанную поверхность одним цветом, в данном случае черным, чтобы остатки анимации не мешались на экране.</p>
-
         </div>
 
         <div class="post-license text-center">

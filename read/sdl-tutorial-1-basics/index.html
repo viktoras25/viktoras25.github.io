@@ -26,11 +26,7 @@
         <div class="row g-0">
             <nav class="navbar navbar-expand col-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav ml-auto nav-ul">
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" data-scroll-nav="0">Services</a>-->
-<!--    </li>-->
-</ul>
+                    <ul class="navbar-nav ml-auto nav-ul"></ul>
                 </div>
             </nav>
         </div>
@@ -46,12 +42,12 @@
                     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="/read/sdl-tutorial-1-basics/" rel="bookmark">SDL: Как создать игру. Базовое окно.</a>
+                <a href="/read/sdl-tutorial-1-basics" rel="bookmark">SDL: Как создать игру. Базовое окно.</a>
             </h2>
             <div class="col date text-end float-end">01.05.2012</div>
         </div>
         <div class="entry">
-            <p><img class="oppic" src="https://viktoras.de/img/sdl_logo.png" alt="SDL" />Это вольный перевод и переосмысление статьи, <a href="http://www.sdltutorials.com/sdl-tutorial-basics">SDL Tutorial Basic</a> за авторством Tim Jones. Хочу выделить, что это не прямой перевод, код не полностью повторяет код оригинала, тем не менее вы можете сверяться и сравнивать с оригинальной статьей. Готовый код я буду выкладывать на <a href="https://github.com/charnad/SDLTutorial">Github</a>, откуда вы сможете скачать так же ZIP-архив. Если вы увидите ошибку, неточность, или у вас возникнут проблемы - обращайтесь. Вы можете оставить комментарий или написать мне на почту, она указана внизу страницы. Итак начнем.</p>
+            <p><img class="oppic" src="/img/sdl_logo.png" alt="SDL" />Это вольный перевод и переосмысление статьи, <a href="http://www.sdltutorials.com/sdl-tutorial-basics">SDL Tutorial Basic</a> за авторством Tim Jones. Хочу выделить, что это не прямой перевод, код не полностью повторяет код оригинала, тем не менее вы можете сверяться и сравнивать с оригинальной статьей. Готовый код я буду выкладывать на <a href="https://github.com/charnad/SDLTutorial">Github</a>, откуда вы сможете скачать так же ZIP-архив. Если вы увидите ошибку, неточность, или у вас возникнут проблемы - обращайтесь. Вы можете оставить комментарий или написать мне на почту, она указана внизу страницы. Итак начнем.</p>
 
 <p>Эти обучающие статьи предназначены для тех, у кого уже есть опыт использования C++ или другого языка программирования. Если у вас возникают сложности с пониманием кода, а не концепций, то я настоятельно советую вам сначала прочитать статью, объясняющую основы языка С++. Необязательно знать все о С++, но чем больше - тем проще вам будет в дальнейшем.</p>
 
@@ -63,7 +59,7 @@
 
 <p>Давайте, наконец, создадим два файла, назовем их <strong>App.h</strong> и <strong>App.cpp</strong>, это будет ядром нашей программы. Откройте <strong>App.h</strong> и добавьте туда следующий код:</p>
 
-<pre><code class="cpp">#ifndef _APP_H_
+<pre><code class="language-cpp">#ifndef _APP_H_
 #define _APP_H_
 
 #include &lt;SDL.h&gt;
@@ -78,7 +74,7 @@ class App {
 
 <p>Теперь в файл <strong>App.cpp</strong> добавим вот этот код:</p>
 
-<pre><code class="cpp">#include "App.h"
+<pre><code class="language-cpp">#include "App.h"
 
 App::App() {}
 
@@ -112,7 +108,7 @@ int main(int argc, char* argv[]) {
 
 <p>Важно понимать, что игра это просто один большой цикл. Внутри этого цикла случаются события, обновляются данные, рисуются картинки. Поэтому базовая структура игры может иметь следующий вид:</p>
 
-<pre><code class="cpp">Initialize();
+<pre><code class="language-cpp">Initialize();
 
 while(true) {
     Events();
@@ -127,7 +123,7 @@ Cleanup();
 
 <p>Поясним эту мысль на примере. Например, у нас есть наш рыцарь, герой игры. Все, что мы хотим сделать, это просто его перемещать. Если я нажму влево - он пойдет налево. Сейчас мы выясним, как это сделать в цикле. Во-первых, мы знаем, что мы хотим, проверять события (события клавиатуры). Так как события нужны для управления данными, нам нужны будут переменные, которые будут изменяться. Тогда мы можем использовать эти переменные для отображения нашего рыцаря на экране. У нас могло бы быть что-нибудь навроде:</p>
 
-<pre><code class="cpp">if(Key == LEFT) X--;
+<pre><code class="language-cpp">if(Key == LEFT) X--;
 if(Key == RIGHT) X++;
 if(Key == UP) Y--;
 if(Key == DOWN) Y++;
@@ -165,7 +161,7 @@ class App {
 
 <p>А в файле <strong>App.cpp</strong>:</p>
 
-<pre><code class="cpp">#include "App.h"
+<pre><code class="language-cpp">#include "App.h"
 
 App::App() {
     Running = true;
@@ -216,7 +212,7 @@ void App::Cleanup() {}
 
 <p>Теперь, когда все настроено, давайте создадим окно, где будет отрисовываться наша игра. Откройте <strong>App.h</strong> и добавить переменную поверхности SDL:</p>
 
-<pre><code class="cpp">#ifndef _APP_H_
+<pre><code class="language-cpp">#ifndef _APP_H_
 #define _APP_H_
 
 #include &lt;SDL.h&gt;
@@ -245,7 +241,7 @@ class App {
 
 <p>Теперь, давайте отредактируем функцию Init, чтобы инициализировать эту поверхность:</p>
 
-<pre><code class="cpp">bool App::Init() {
+<pre><code class="language-cpp">bool App::Init() {
     if(SDL_Init(SDL_INIT_EVERYTHING) &gt; 0) {
         return false;
     }
@@ -262,7 +258,7 @@ class App {
 
 <p>Теперь, когда окно настроено, давайте сделаем так, чтобы все работало гладко. Изменим функцию App::Cleanup() и добавим следующее:</p>
 
-<pre><code class="cpp">void App::Cleanup() {
+<pre><code class="language-cpp">void App::Cleanup() {
     SDL_Quit();
 }
 </code></pre>
@@ -271,7 +267,7 @@ class App {
 
 <p>Чтобы все было аккуратно, надо также инициализировать указатель Screen значением NULL, в конструкторе класса. В <strong>App.cpp</strong> добавить следующее:</p>
 
-<pre><code class="cpp">App::App() {
+<pre><code class="language-cpp">App::App() {
     Screen = NULL;
     Running = true;
 }
@@ -279,7 +275,7 @@ class App {
 
 <p>Попробуйте скомпилировать проект, посмотрите как он работает. Должно появится пустое окно. Его все еще нельзя закрыть просто так, придется воспользоваться диспетчером задач. Это не очень удобно, поэтому давайте исправим ситуацию. Изменим функцию Event:</p>
 
-<pre><code class="cpp">void App::Event(SDL_Event* Event) {
+<pre><code class="language-cpp">void App::Event(SDL_Event* Event) {
     if(Event-&gt;type == SDL_QUIT) {
         Running = false;
     }
@@ -288,8 +284,7 @@ class App {
 
 <p>SDL события различаются по типу. Эти типы могут варьироваться от нажатия клавиш, движения мыши, все что нам нужно это проверить его тип. Нужный нам тип - это запрос на закрытие окна (например, когда пользователь нажимает кнопку X). Если это событие произойдет, мы устанавливаем Running = false, тем самым завершив нашу программу. Достаточно просто. Мы рассмотрим больше событий в других статьях.</p>
 
-<p>Если вы хорошо разобрались и понимаете, как работает код в этой статье, вы можете перейти к <a href="https://viktoras.de/blog/sdl-tutorial-2-coordinates-and-blitting/">следующей</a>, чтобы узнать больше о поверхности SDL.</p>
-
+<p>Если вы хорошо разобрались и понимаете, как работает код в этой статье, вы можете перейти к <a href="/read/sdl-tutorial-2-coordinates-and-blitting/">следующей</a>, чтобы узнать больше о поверхности SDL.</p>
         </div>
 
         <div class="post-license text-center">

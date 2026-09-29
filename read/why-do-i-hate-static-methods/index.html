@@ -26,11 +26,7 @@
         <div class="row g-0">
             <nav class="navbar navbar-expand col-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav ml-auto nav-ul">
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" data-scroll-nav="0">Services</a>-->
-<!--    </li>-->
-</ul>
+                    <ul class="navbar-nav ml-auto nav-ul"></ul>
                 </div>
             </nav>
         </div>
@@ -46,7 +42,7 @@
                     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="/read/why-do-i-hate-static-methods/" rel="bookmark">Why do I hate static methods</a>
+                <a href="/read/why-do-i-hate-static-methods" rel="bookmark">Why do I hate static methods</a>
             </h2>
             <div class="col date text-end float-end">10.05.2015</div>
         </div>
@@ -55,7 +51,7 @@
 
 <p>To begin with, a static method is a class method, that can be invoked without instantiating a class. The most common usage I've seen are helper classes (oh my god I do also hate helper classes) and singletones. Let's look at those helper classes from another point of view. We have some set of methods, that, let's say, format a string in different ways. So we have</p>
 
-<pre><code class="php">class Helper
+<pre><code class="language-php">class Helper
 {
    public static formatA() {...}
    public static formatB() {...}
@@ -65,7 +61,7 @@
 
 <p>The thing is, it has absolutely no difference from:</p>
 
-<pre><code class="php">function helper_formatA() {...}
+<pre><code class="language-php">function helper_formatA() {...}
 function helper_formatB() {...}
 function helper_formatC() {...}
 </code></pre>
@@ -74,7 +70,7 @@ function helper_formatC() {...}
 
 <p>So we have used this static method somewhere in the code:</p>
 
-<pre><code class="php">// .. within some class
+<pre><code class="language-php">// .. within some class
 public function foo()
 {
     // ...
@@ -89,7 +85,6 @@ public function foo()
 <p>The same goes for the Helper Formatter example. Take an advantage of passing an instance of a Formatter class as a dependency injection. Use an interface as a type hinting to make it loosely coupled and be easily replacable. And then your method will depend on an abstraction rather than a specific object.</p>
 
 <p>Usage of static methods can probably be explained somehow, the same way as a usage of goto. I used goto <a href="https://github.com/mtdowling/cron-expression/issues/50#issuecomment-41650357">once</a>, because of the PHP 'continue 2' memory leak bug. But under normal circustumstances I don't think there is a justification of using a static method.</p>
-
         </div>
 
         <div class="post-license text-center">

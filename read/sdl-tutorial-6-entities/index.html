@@ -26,11 +26,7 @@
         <div class="row g-0">
             <nav class="navbar navbar-expand col-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav ml-auto nav-ul">
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" data-scroll-nav="0">Services</a>-->
-<!--    </li>-->
-</ul>
+                    <ul class="navbar-nav ml-auto nav-ul"></ul>
                 </div>
             </nav>
         </div>
@@ -46,18 +42,18 @@
                     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="/read/sdl-tutorial-6-entities/" rel="bookmark">SDL: Как создать игру. Сущности.</a>
+                <a href="/read/sdl-tutorial-6-entities" rel="bookmark">SDL: Как создать игру. Сущности.</a>
             </h2>
             <div class="col date text-end float-end">12.05.2012</div>
         </div>
         <div class="entry">
-            <p><img class="oppic" src="https://viktoras.de/img/sdl_logo.png" alt="SDL" />Это вольный перевод и переосмысление статьи, <a href="http://www.sdltutorials.com/sdl-animation">SDL Tutorial - Animation</a> за авторством Tim Jones. Готовый код я буду выкладывать на <a href="https://github.com/charnad/SDLTutorial">Github</a>, откуда вы сможете скачать так же ZIP-архив. Если вы увидите ошибку, неточность, или у вас возникнут проблемы - обращайтесь: вы можете оставить комментарий или написать мне на почту, она указана внизу страницы.</p>
+            <p><img class="oppic" src="/img/sdl_logo.png" alt="SDL" />Это вольный перевод и переосмысление статьи, <a href="http://www.sdltutorials.com/sdl-animation">SDL Tutorial - Animation</a> за авторством Tim Jones. Готовый код я буду выкладывать на <a href="https://github.com/charnad/SDLTutorial">Github</a>, откуда вы сможете скачать так же ZIP-архив. Если вы увидите ошибку, неточность, или у вас возникнут проблемы - обращайтесь: вы можете оставить комментарий или написать мне на почту, она указана внизу страницы.</p>
 
 <p>В этой статьей мы направим наши силы на создание сущностей (Entities). Сущности - это все, с чем можно взаимодействовать. Например, это может быть монстр или сундук с сокровищами, который можно открыть. В этом смысле, практически все в игре, что движется, это сущность. Камень, который является частью карты, который никогда не двигается, не является сущностью. Но если вы хотите, чтобы камень двигался, не важно по какой причине, то мы сделаем его сущностью.<!--more--></p>
 
 <p>Давайте начнем с создания двух новых файлов: <strong>Entity.cpp</strong> и <strong>Entity.h</strong>. Откройте заголовочный файл и добавьте следующее:</p>
 
-<pre><code class="cpp">#include &lt;vector&gt;
+<pre><code class="language-cpp">#include &lt;vector&gt;
 
 #include "Animation.h"
 #include "Sprite.h"
@@ -92,7 +88,7 @@ class Entity {
 
 <p>Теперь откройте Entity.cpp и добавьте это:</p>
 
-<pre><code class="cpp">#include "Entity.h"
+<pre><code class="language-cpp">#include "Entity.h"
 
 std::vector&lt;Entity*&gt; Entity::EntityList;
 
@@ -152,7 +148,7 @@ void Entity::Cleanup() {
 
 <p>Как я уже говорил в начале, это лишь базовая структура класса Entity, она еще может не так много, но не волнуйтесь, в будущем сможет сделать все, что вы захотите. Итак, давайте заставим сущности работать. Откройте <strong>App.h</strong> и добавьте файл заголовка в начале, и объявить две сущности:</p>
 
-<pre><code class="cpp">#include "Entity.h"
+<pre><code class="language-cpp">#include "Entity.h"
 
 //...
 
@@ -163,7 +159,7 @@ private:
 
 <p>Давайте теперь загрузим в них изображения, в App::Init.cpp добавьте следующее:</p>
 
-<pre><code class="cpp">if(Entity1.Load("./gfx/yoshi.bmp", 64, 64, 8) == false) {
+<pre><code class="language-cpp">if(Entity1.Load("./gfx/yoshi.bmp", 64, 64, 8) == false) {
     return false;
 }
 
@@ -181,7 +177,7 @@ Entity::EntityList.push_back(&amp;Entity2);
 
 <p>Вспомните, что я говорил, про инкапсуляцию основных функции игры в классе Entity. Мы должны вызывать эти функции в соответствующих функциях App. Поэтому, откройте App::Loop и добавьте следующее:</p>
 
-<pre><code class="cpp">for(int i = 0;i &lt; Entity::EntityList.size();i++) {
+<pre><code class="language-cpp">for(int i = 0;i &lt; Entity::EntityList.size();i++) {
     if(!Entity::EntityList[i]) continue;
 
     Entity::EntityList[i]-&gt;Loop();
@@ -190,7 +186,7 @@ Entity::EntityList.push_back(&amp;Entity2);
 
 <p>Мы в обходим каждый элемент вектора и вызываем функцию Loop. Довольно просто. (И мы проверяем на NULL, чтобы не было ошибок). Теперь, давайте сделаем то же самое в App::Render:</p>
 
-<pre><code class="cpp">for(int i = 0;i &lt; Entity::EntityList.size();i++) {
+<pre><code class="language-cpp">for(int i = 0;i &lt; Entity::EntityList.size();i++) {
     if(!Entity::EntityList[i]) continue;
 
     Entity::EntityList[i]-&gt;Render(Screen);
@@ -199,7 +195,7 @@ Entity::EntityList.push_back(&amp;Entity2);
 
 <p>и еще раз то же самое в App::Cleanup:</p>
 
-<pre><code class="cpp">for(int i = 0;i &lt; Entity::EntityList.size();i++) {
+<pre><code class="language-cpp">for(int i = 0;i &lt; Entity::EntityList.size();i++) {
     if(!Entity::EntityList[i]) continue;
 
     Entity::EntityList[i]-&gt;Cleanup();
@@ -211,7 +207,6 @@ Entity::EntityList.clear();
 <p>Обратите внимание, я добавил вызов функции очистки вектора.</p>
 
 <p>Отлично, теперь скомпилируйте то, что получилось. Вы должны увидеть две фигурки Йоши на экране. В следующей статье мы рассмотрим создание карты.</p>
-
         </div>
 
         <div class="post-license text-center">

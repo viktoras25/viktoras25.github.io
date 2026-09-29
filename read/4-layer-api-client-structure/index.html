@@ -26,11 +26,7 @@
         <div class="row g-0">
             <nav class="navbar navbar-expand col-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav ml-auto nav-ul">
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" data-scroll-nav="0">Services</a>-->
-<!--    </li>-->
-</ul>
+                    <ul class="navbar-nav ml-auto nav-ul"></ul>
                 </div>
             </nav>
         </div>
@@ -46,7 +42,7 @@
                     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="/read/4-layer-api-client-structure/" rel="bookmark">4 Layer API Client Structure</a>
+                <a href="/read/4-layer-api-client-structure" rel="bookmark">4 Layer API Client Structure</a>
             </h2>
             <div class="col date text-end float-end">11.08.2019</div>
         </div>
@@ -60,7 +56,7 @@
 <li>Transport Layer</li>
 </ol>
 
-<h4 id="business%2Fdomain-layer">Business/Domain layer</h4>
+<h4>Business/Domain layer</h4>
 
 <p>Business layer doesn't really belong to the library itself, it is application specific. This layer contains business logic, which operates in business terms. For example, your use case requires you to create a Google Analystics visitor statistics widget for your backend panel. It is important to note, that use case does not define which protocol do you need to use or which request you need to make. All because it's irrelevant, the use case is still valid regardless of technical details. We can use some pseudocode to describe usage of the client library in the use case: <code>gaService.getVisitorStatistics()</code>. Actually, the real code shouldn't look much different. As we see, business layer makes use of a service class, which belongs to a service layer.</p>
 
@@ -70,7 +66,7 @@
 
 <!--more-->
 
-<h4 id="service-layer">Service Layer</h4>
+<h4>Service Layer</h4>
 
 <p>Service layer is also application specific and is not shipped with a library. This layer can translate business requirement into Client terms. In the previous layer we have stated, that we need visitor statistics. This layer knows how to instantiate a Client and which request to invoke to get the data. Also here you get the data from the response object and prepare it to pass back to business layer. This layer can be implemented as an Adapter pattern, which adapts Client Library to the required interface.</p>
 
@@ -78,7 +74,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="343px" height="84px" viewBox="-0.5 -0.5 343 84"><defs/><g><path d="M 80 20 L 253.63 20" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 258.88 20 L 251.88 23.5 L 253.63 20 L 251.88 16.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(94.5,13.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="147" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;background-color:#ffffff;"> request(StatisticsRequest) </div></div></foreignObject><text x="74" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica"> request(StatisticsRequest) </text></switch></g><rect x="0" y="0" width="80" height="80" fill="#000000" stroke="#000000" transform="translate(2,3)" opacity="0.25"/><rect x="0" y="0" width="80" height="80" fill="#fff2cc" stroke="#d6b656" pointer-events="none"/><g transform="translate(19.5,33.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="40" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 42px; white-space: nowrap; overflow-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">Service</div></div></foreignObject><text x="20" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">Service</text></switch></g><path d="M 260 60 L 86.37 60" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 81.12 60 L 88.12 56.5 L 86.37 60 L 88.12 63.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(126.5,53.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="102" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;background-color:#ffffff;">StatisticsResponse</div></div></foreignObject><text x="51" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">StatisticsResponse</text></switch></g><rect x="260" y="0" width="80" height="80" fill="#000000" stroke="#000000" transform="translate(2,3)" opacity="0.25"/><rect x="260" y="0" width="80" height="80" fill="#d5e8d4" stroke="#82b366" pointer-events="none"/><g transform="translate(284.5,33.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="30" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 32px; white-space: nowrap; overflow-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">Client</div></div></foreignObject><text x="15" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">Client</text></switch></g></g></svg>
 </div>
 
-<h4 id="client-layer">Client Layer</h4>
+<h4>Client Layer</h4>
 
 <p>Now we have crossed application boundry. This is no longer a part of the application, but a distributable and reusable library by itself. Client knows how send requests. It has a public method <code>request(RequestInterface);</code> and that is basically it. In this layer we define Request and Response classes, which contain the that data you pass to the API and receive from the it. If it's a SOAP client, Request can produce XML (or an array, because PHP's SoapClient in WSDL mode is smart enough) or a JSON string. Response must be able to parse response SOAP XML or JSON and provide you all the methods you need to retrieve data. It can be argued, that I'm missing a presenter layer here, which is true. From my experience, if a format changes most of the request structure change as well. So while these concerns are separate, in practice they usually change together.</p>
 
@@ -86,7 +82,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="283px" height="84px" viewBox="-0.5 -0.5 283 84"><defs/><g><path d="M 80 20 L 100 20 L 193.63 20" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 198.88 20 L 191.88 23.5 L 193.63 20 L 191.88 16.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(105.5,13.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="64" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;background-color:#ffffff;"> get($body) </div></div></foreignObject><text x="32" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica"> get($body) </text></switch></g><rect x="0" y="0" width="80" height="80" fill="#000000" stroke="#000000" transform="translate(2,3)" opacity="0.25"/><rect x="0" y="0" width="80" height="80" fill="#d5e8d4" stroke="#82b366" pointer-events="none"/><g transform="translate(24.5,33.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="30" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 32px; white-space: nowrap; overflow-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">Client</div></div></foreignObject><text x="15" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">Client</text></switch></g><path d="M 200 60 L 86.37 60" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 81.12 60 L 88.12 56.5 L 86.37 60 L 88.12 63.5 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g transform="translate(95.5,54.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="90" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;background-color:#ffffff;"> $responseBody </div></div></foreignObject><text x="45" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica"> $responseBody </text></switch></g><rect x="200" y="0" width="80" height="80" fill="#000000" stroke="#000000" transform="translate(2,3)" opacity="0.25"/><rect x="200" y="0" width="80" height="80" fill="#dae8fc" stroke="#6c8ebf" pointer-events="none"/><g transform="translate(214.5,33.5)"><switch><foreignObject style="overflow:visible;" pointer-events="all" width="50" height="12" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 52px; white-space: nowrap; overflow-wrap: normal; text-align: center;"><div xmlns="http://www.w3.org/1999/xhtml" style="display:inline-block;text-align:inherit;text-decoration:inherit;white-space:normal;">Transport</div></div></foreignObject><text x="25" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">Transport</text></switch></g></g></svg>
 </div>
 
-<h4 id="transport-layer">Transport Layer</h4>
+<h4>Transport Layer</h4>
 
 <p>This is your HTTP client, SOAP client or any other client, that doesn't care about contents of your request. It's  just a transmission tool, a separate library which hides behind an interface (e.g. <a href="https://www.php-fig.org/psr/psr-18/">PSR-18</a>).</p>
 
@@ -100,7 +96,7 @@
     <img src="/img/posts/2019-08-11-4-layer-api-client-structure/file-structure.png" alt="file-structure" width="255px">
 </div>
 
-<h4 id="advantages">Advantages</h4>
+<h4>Advantages</h4>
 
 <p>This structure helps me to create clients blazingly fast.</p>
 
@@ -109,7 +105,6 @@
 <li>Every layer concentrates on a specific concern. If changes are required, they usually involve just one layer.</li>
 <li>Extending is easy. To create new requests you just need to add new Request classes, no changes to client needed.</li>
 </ul>
-
         </div>
 
         <div class="post-license text-center">

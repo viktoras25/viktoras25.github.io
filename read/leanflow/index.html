@@ -26,11 +26,7 @@
         <div class="row g-0">
             <nav class="navbar navbar-expand col-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav ml-auto nav-ul">
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" data-scroll-nav="0">Services</a>-->
-<!--    </li>-->
-</ul>
+                    <ul class="navbar-nav ml-auto nav-ul"></ul>
                 </div>
             </nav>
         </div>
@@ -46,7 +42,7 @@
                     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="/read/leanflow/" rel="bookmark">On git branching. Leanflow</a>
+                <a href="/read/leanflow" rel="bookmark">On git branching. Leanflow</a>
             </h2>
             <div class="col date text-end float-end">30.05.2021</div>
         </div>
@@ -57,7 +53,7 @@
 
 <!--more-->
 
-<h3 id="naming-schema">Naming schema</h3>
+<h3>Naming schema</h3>
 
 <p>What git has brought to the table in comparison to the previous generation of VSCs is the ease of working with branches. Since then, branching has become a tremendous tool in software development. The work on a project is done in branches, that are being merged together to form the final product. Just as with code style, naturally you need a convention for naming the branches you use. I have worked with different naming policies, but just the same way as with the code style, the style itself is not that important, as long as it is consistent throughout the project. A schema I can suggest is: "type/name". E.g. "release/1.2.3" or "testing/PROJ-10". More on that in sections dedicated to specific branches.</p>
 
@@ -69,7 +65,7 @@
   <p>0&#46; Have a naming convention for your branches and commits.</p>
 </blockquote>
 
-<h3 id="master-branch">Master branch</h3>
+<h3>Master branch</h3>
 
 <p>When a developer starts working on a project, they need some code state to start with. In a repository there has to be a branch, that contains the latest stable state of the project. Normally it's the last released version. This is what's working in the production and is the status quo. In git this branch is usually the master branch. So the first rule of the flow is:</p>
 
@@ -81,7 +77,7 @@
 
 <p>Can you base your work on a different branch? Well, another branch may contain changes, that are not present in the master and will not ever be present, e.g. never go live due to any reason. Master is the most compatible branch, and thus it's least problematic to merge your changes later.</p>
 
-<h3 id="feature-branches">Feature branches</h3>
+<h3>Feature branches</h3>
 
 <p>Every developer in the team can work on their task in their own branch, called feature branch. These branches are forked from master branch and the whole work on a task is done in that branch. In a feature branch, a developer has freedom to commit as often or infrequently as they wish.</p>
 
@@ -97,7 +93,7 @@
   </ol>
 </blockquote>
 
-<h3 id="integration-branch">Integration branch</h3>
+<h3>Integration branch</h3>
 
 <p>When work is done it is time to bring it to testing. I am not covering code reviews here, as it's not the part of the branching flow. Usually there is some testing/staging server where testers can try out new changes. We do not yet know if these changes are making it into the release or if they work as expected. It may so happen, that the feature gets cancelled altogether. So we need a branch, that temporarily holds the changes, so that they can be rolled out and tested.</p>
 
@@ -113,7 +109,7 @@
   </ol>
 </blockquote>
 
-<h3 id="release-branch">Release branch</h3>
+<h3>Release branch</h3>
 
 <p>Now we have some tested features we want to release. For this a release branch is created. All features planned for release are merged into corresponding release branch. Some teams merge directly into master branch, however here's why extra step can be useful. Once you've merged something, it's hard to unmerge it (reverts can be quite a pain). And again, you might discover a bug in the very last moment, or release of some feature gets blocked. It is usually far easier to remove and re-create a release branch if this happens.</p>
 
@@ -127,7 +123,7 @@
   </ol>
 </blockquote>
 
-<h3 id="releases">Releases</h3>
+<h3>Releases</h3>
 
 <p>Ok, we got all the way through, now we want to release the changes. We assume, that at this moment release branch only contains the changes that we want to release. For a release you create a tag (a tag is a named commit), for example "v21.01". Depending on your processes, you might want to create a tag from a release branch and then merge it into master, or merge into master first and then create a tag based on a master branch. This makes no real difference. Tagging is a very easy and lightweight way of tracking released versions.</p>
 
@@ -145,7 +141,7 @@
   </ol>
 </blockquote>
 
-<h3 id="conclusion">Conclusion</h3>
+<h3>Conclusion</h3>
 
 <p>So there we go, we have defined an organized and effective VCS flow in just 7 rules:</p>
 
@@ -158,7 +154,6 @@
   5&#46; Release branch is merged into master and a tag is created to mark the release.<br>
   6&#46; After release feature, integration and release branches are disposed and new ones are created.<br></p>
 </blockquote>
-
         </div>
 
         <div class="post-license text-center">

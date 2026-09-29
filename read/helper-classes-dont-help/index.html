@@ -12,7 +12,7 @@
 
             <meta property="og:type" content="website">
             <meta property="og:url" content="https://viktoras.de/read/helper-classes-dont-help/">
-            <meta property="og:title" content="Helper classes don&#039;t help - viktoras.de">
+            <meta property="og:title" content="Helper classes don&amp;#039;t help - viktoras.de">
             <meta property="og:description" content="Viktoras Bezaras, Engineering Manager in Leipzig. 18 years of software development, 7 years leading engineering teams, building AI-first development workflows.">
             <meta property="og:image" content="https://viktoras.de/img/viktoras_3.jpg">
         
@@ -26,11 +26,7 @@
         <div class="row g-0">
             <nav class="navbar navbar-expand col-12" style="top: 0; left: 0; right: 0;">
                 <div class="collapse navbar-collapse justify-content-center">
-                    <ul class="navbar-nav ml-auto nav-ul">
-<!--    <li class="nav-item">-->
-<!--        <a class="nav-link" href="#" data-scroll-nav="0">Services</a>-->
-<!--    </li>-->
-</ul>
+                    <ul class="navbar-nav ml-auto nav-ul"></ul>
                 </div>
             </nav>
         </div>
@@ -46,7 +42,7 @@
                     <article class="post">
         <div class="postdata row no-gutters g-0">
             <h2 class="title col-md-auto">
-                <a href="/read/helper-classes-dont-help/" rel="bookmark">Helper classes don&#039;t help</a>
+                <a href="/read/helper-classes-dont-help" rel="bookmark">Helper classes don&#039;t help</a>
             </h2>
             <div class="col date text-end float-end">04.08.2019</div>
         </div>
@@ -55,7 +51,7 @@
 
 <p>To begin with, a static method is a method, that can be invoked without instantiating an object of that class. The most common usage of static methods I've seen are helper classes and singleton pattern. A helper class is a collection of static methods, which hopefully has some common topic. So it may look like:</p>
 
-<pre><code class="php">// /helpers/FormatHelper.php
+<pre><code class="language-php">// /helpers/FormatHelper.php
 class FormatHelper
 {
     public static function formatXml($xmlString) {...}
@@ -65,32 +61,31 @@ class FormatHelper
 
 <p>and the usage would be:</p>
 
-<pre><code class="php">// /lib/ServiceClient.php
+<pre><code class="language-php">// /lib/ServiceClient.php
 $this-&gt;getLogger()-&gt;debug(FormatHelper::formatXml($response));
 </code></pre>
 
 <p>I hope you get the idea. So here is where I see the problem. <!--more--></p>
 
-<h4 id="cohesion">Cohesion</h4>
+<h4>Cohesion</h4>
 
 <p>Cohesion is a metric of how much parts of a module or class belong together. You should aim at having cohesive classes. Each class should have a precisely defined task, do that and nothing more. Helper classes usually have methods that are all over the place. Even if there is some general idea, e.g. <code>DateHelper</code>, it's methods can still do a multitude of things: parsing, converting, formatting, calculation. Very often helpers classes are just a dump of functions that would otherwise have one common word in name.</p>
 
-<h4 id="hidden-global-state">Hidden Global State</h4>
+<h4>Hidden Global State</h4>
 
 <p>An object is a set of data and functions or methods that operate on this particular data. By instantiating a second object we create another set of data which is independent of the first one. You have control over the data you work with. However, helpers and static methods in general do not require an object instance, but that by no means prevent you from having data to work with. Data (class variables) can too be declared static. This data is shared by all instances of a class as well as static methods. This can easily lead to unpredictable behavior in your system, because someone in another part of the system started using your helper and it changes the data in the way you don't expect.</p>
 
-<h4 id="dependency">Dependency</h4>
+<h4>Dependency</h4>
 
 <p>Every time you call another class, you create a dependency on this class. Since we want to build complex system, it's inevitable that some components will depend on another. We manage these dependencies to hinder coupling problems, for example by <a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle">dependency inversion</a>. But by calling a static method you create a rigid connection, that cannot be replaced. Moreso, it's not a dependency that is detectable by just looking on class definitions. Unless you look into the code (and you are lucky if there is a <code>use</code> statement), you will never know this dependency is even there.</p>
 
-<h4 id="connascence">Connascence</h4>
+<h4>Connascence</h4>
 
 <p>If you have a helper, you kinda want to use it everywhere, otherwise what's the point. Some day you may decide to add another parameter to a static function. This may incur a huge wave of changes to every place using this helper. This means your <a href="https://en.wikipedia.org/wiki/Connascence">connascence</a> is high. If your function will never change and is very specific, there is no benefit in putting it into a helper at all. If it's very abstract, you will need to have enough parameters to suit all the cases you may have in the projects. And then you never touch the function, because you can't guarantee the system will work if you do. Instead, you could just build normal functions within the classes that need this logic.</p>
 
-<h4 id="reasonable-usage">Reasonable Usage</h4>
+<h4>Reasonable Usage</h4>
 
 <p>With regard to all the above, there are some legitimate usages of static methods. The most obvious is alternative constructors. And yes, constructor itself is a static function with a special syntax, it creates the instance of a class, which does not exist prior to that. Sometimes you need to be able to create an object instance in different ways, e.g. from a serialized data, from a subclass and so on. Beyond that it's hard for me to imagine another non-exotic case, where static methods would be appropriate.</p>
-
         </div>
 
         <div class="post-license text-center">
