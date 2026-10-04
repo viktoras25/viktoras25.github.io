@@ -1,6 +1,7 @@
 ---
 title: Viktoras Bezaras · Lebenslauf
 lang: de
+description: Lebenslauf von Viktoras Bezaras, Engineering Manager in Leipzig. Engineering-Leitung bei LeasingMarkt.de / AutoScout24, ehemaliger CTO bei SportSpar, KI-first-Entwicklungsworkflows.
 ---
 @extends('_layouts.resume')
 
@@ -41,7 +42,7 @@ lang: de
   .cv2-contact    { font-family: 'IBM Plex Sans', sans-serif; font-size: 11.5px; color: var(--c-contact); line-height: 1.7; }
   .cv2-contact a  { color: inherit; }
   .cv2-divider    { height: 1px; background: var(--c-divider); margin: 24px 0 22px; }
-  .cv2-profile    { font-size: 18.5px; line-height: 1.5; color: var(--c-profile); margin: 0 0 30px; }
+  .cv2-profile    { font-size: 16.5px; line-height: 1.5; color: var(--c-profile); margin: 0 0 30px; }
 
   /* Page 2 header */
   .cv2-pg2-header { margin-bottom: 26px; }
@@ -70,6 +71,8 @@ lang: de
   .cv2-date-sm      { font-size: 10px; }
   .cv2-desc         { font-size: 13px; color: var(--c-desc); line-height: 1.45; margin: 3px 0 9px; }
   .cv2-desc-sm      { font-size: 13px; color: var(--c-desc); line-height: 1.45; margin: 3px 0 8px; }
+  .cv2-subline      { font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; color: var(--c-desc); margin: 3px 0 0; }
+  .cv2-subline + .cv2-desc { margin-top: 9px; }
   .cv2-accent-dot   { color: var(--c-accent); }
 
   /* Bullets */
@@ -105,7 +108,7 @@ lang: de
     .cv2-inner      { padding: 28px 20px; }
     .cv2-photo-wrap { position: static; width: 110px; height: 97px; margin-bottom: 18px; }
     .cv2-name       { font-size: 36px; }
-    .cv2-profile    { font-size: 16.5px; }
+    .cv2-profile    { font-size: 15.5px; }
     .cv2-row        { flex-wrap: wrap; gap: 2px 14px; }
     .cv2-lang-list  { flex-wrap: wrap; gap: 8px 24px; }
   }
@@ -138,7 +141,7 @@ lang: de
       <div class="cv2-accent-bar"></div>
       <div class="cv2-contact">mail@viktoras.de&nbsp;&nbsp;·&nbsp;&nbsp;Leipzig, Deutschland&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://viktoras.de">viktoras.de</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://github.com/viktoras25">github.com/viktoras25</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="https://www.linkedin.com/in/vkts/">linkedin.com/in/vkts</a></div>
       <div class="cv2-divider"></div>
-      <p class="cv2-iser cv2-profile">Ich baue Produkte und Teams, in denen KI kein Feature, sondern die Arbeitsweise ist: In 4 Jahren machte ich mein Team agentic-first und verdoppelte die Velocity. Ich arbeite leader-leader, auf Vertrauen gebaut, mit Entwicklern, die ihre Bereiche voll verantworten.</p>
+      <p class="cv2-iser cv2-profile">Softwareentwickler, der ins Engineering Management gewachsen ist, ohne den Code aufzugeben. Ich finde, was kaputt ist, und behebe es: überhöhte AWS-Kosten, langsame agile Prozesse, ein schwaches Team. Ich führe leader-leader und vertrauensbasiert, mit Entwicklern, die ihre Bereiche selbst verantworten.</p>
 
       <div class="cv2-sechead cv2-sechead-exp"><span class="cv2-sectitle">Berufserfahrung</span><span class="cv2-secline"></span></div>
 
@@ -150,20 +153,21 @@ lang: de
             <div class="cv2-job-title">Engineering Manager <span class="cv2-accent-dot">·</span> LeasingMarkt.de / AutoScout24</div>
             <div class="cv2-date">03/2022 - heute</div>
           </div>
-          <div class="cv2-iser cv2-desc">Düsseldorf - LeasingMarkt GmbH ist ein Auto-Leasing-Marktplatz mit über 2 Mio. monatlichen Besuchern, übernommen von der AutoScout24 Group. Ich leitete Entwicklerteams als Engineering Manager und Tech Lead.</div>
+          <div class="cv2-subline">Engineering Manager <span class="cv2-accent-dot">·</span> 2024–heute <span class="cv2-accent-dot">·</span> 7 Entwickler (Rolle bei der Umstrukturierung nach der Übernahme neu zugeschnitten)</div>
+          <div class="cv2-subline">Head of Development <span class="cv2-accent-dot">·</span> 2022–2024 <span class="cv2-accent-dot">·</span> 15 Entwickler, 4 Teams</div>
+          <div class="cv2-iser cv2-desc">Düsseldorf - Auto-Leasing-Marktplatz mit über 2 Mio. Besuchern im Monat, von der AutoScout24 Group übernommen.</div>
           <ul class="cv2-bullets">
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Führte 15 Entwickler in 4 Engineering-Teams nach der Übernahme von LeasingMarkt durch die AutoScout24 Group</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Baute eine agentische Entwicklungs-Suite (Claude, Codex) mit Agents, Skills und KI-first-Workflows für das gesamte Team</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Migrierte On-Premises-Infrastruktur zu AWS, senkte die AWS-Kosten anschließend um 80 % durch Optimierung</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Migrierte die Engineering-Organisation zu GitHub und architektierte die CI/CD-Pipelines neu</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Verdoppelte die Team-Velocity (Story Points/Sprint) durch neue agile Workflows und KI-gestützte Tools</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Verantwortete den gesamten Performance-Management-Zyklus - 1:1s, Reviews, PIPs, Exits</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Baute eine agentische Entwicklungs-Suite (Claude, Codex) mit Agents, Skills und KI-first-Workflows; im eigenen Team eingeführt und von Nachbarteams übernommen</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Setzte die On-Prem → AWS-Migration in 3 Monaten mit um, senkte danach die AWS-Kosten um ~80 %</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Migrierte die Engineering-Organisation zu GitHub und baute die CI/CD-Pipelines neu auf</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Steigerte den Team-Durchsatz 2026 innerhalb von etwa sechs Monaten von ~20–25 auf ~45–50 Story Points pro Sprint, bei gleicher Teamgröße, durch neu gestaltete agile Workflows und KI-gestützte Entwicklung (Claude Code, Codex)</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Verantwortete den gesamten Performance-Management-Zyklus: 1:1s, Reviews, PIPs, Exits</li>
           </ul>
           <div class="cv2-chips">
             <span class="cv2-chip">Personalführung</span><span class="cv2-chip">Recruiting</span><span class="cv2-chip">Performance Management</span><span class="cv2-chip">Teamführung</span><span class="cv2-chip">Stakeholder-Management</span>
           </div>
           <div class="cv2-chips cv2-chips-row2">
-            <span class="cv2-chip">PHP</span><span class="cv2-chip">Laravel</span><span class="cv2-chip">AWS</span><span class="cv2-chip">CDK</span><span class="cv2-chip">Claude Code</span><span class="cv2-chip">MariaDB</span><span class="cv2-chip">Agile</span><span class="cv2-chip">GitHub Actions</span><span class="cv2-chip">GitHub</span><span class="cv2-chip">Codex</span>
+            <span class="cv2-chip">PHP</span><span class="cv2-chip">Laravel</span><span class="cv2-chip">Node.js</span><span class="cv2-chip">AWS</span><span class="cv2-chip">RDS</span><span class="cv2-chip">CDK</span><span class="cv2-chip">Claude Code</span><span class="cv2-chip">MariaDB</span><span class="cv2-chip">Agile</span><span class="cv2-chip">GitHub Actions</span><span class="cv2-chip">GitHub</span><span class="cv2-chip">Codex</span>
           </div>
         </div>
 
@@ -173,13 +177,13 @@ lang: de
             <div class="cv2-job-title">CTO <span class="cv2-accent-dot">·</span> SportSpar</div>
             <div class="cv2-date">07/2019 - 03/2022</div>
           </div>
-          <div class="cv2-iser cv2-desc">Leipzig - SportSpar ist ein Online-Outlet für reduzierte Sportbekleidung und -ausrüstung, das täglich Tausende Bestellungen in mehreren europäischen Märkten verarbeitet.</div>
+          <div class="cv2-subline">Hands-on CTO <span class="cv2-accent-dot">·</span> 2019–2022 <span class="cv2-accent-dot">·</span> 7 Entwickler, 2 Teams</div>
+          <div class="cv2-iser cv2-desc">Leipzig - Online-Outlet für reduzierte Sportartikel mit Tausenden Bestellungen täglich in mehreren europäischen Märkten.</div>
           <ul class="cv2-bullets">
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Stellte ein Team von 7 Entwicklern ein, organisierte und leitete es</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Baute PMS-Architektur, Infrastruktur, Testabdeckung und Message Queue vollständig neu auf</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Baute das Team von 2 auf 7 Entwickler aus und verantwortete das gesamte Engineering</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Baute ein mangelhaftes internes PMS grundlegend neu: Architektur, Infrastruktur, Tests, Message Queue</li>
             <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Etablierte teamorientierte agile Entwicklungsprozesse</li>
             <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Führte Qualitätsstandards ein und automatisierte sie über CI/CD-Prozesse</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Verbesserte die Bestellverarbeitungsgeschwindigkeit drastisch</li>
           </ul>
           <div class="cv2-chips">
             <span class="cv2-chip">Personalführung</span><span class="cv2-chip">Recruiting</span><span class="cv2-chip">Teamführung</span>
@@ -197,11 +201,9 @@ lang: de
           </div>
           <div class="cv2-iser cv2-desc">Leipzig - TraSo GmbH entwickelt Backend-Software für Reiseveranstalter, um täglich Milliarden Reiseangebote zu vermarkten.</div>
           <ul class="cv2-bullets">
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Übernahm das problematischste Modul und machte es zum stabilsten Teil des Systems</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Reduzierte die Fehlerquote drastisch durch tausende Unit-Tests</li>
+            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Für Hoteldaten-Importe eingestellt; schrieb ein langsames, unzuverlässiges Importmodul mit tausenden Unit-Tests neu</li>
             <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Verdreifachte die Anzahl der angebundenen Drittanbieter-Services/APIs</li>
             <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Übernahm weitere Domänen: Buchungs- und Transferschnittstellen, OTDS-Export</li>
-            <li class="cv2-bullet"><span class="cv2-bullet-marker">-</span>Organisierte, übernahm und mentorte das Integrations-Team</li>
           </ul>
           <div class="cv2-chips">
             <span class="cv2-chip">PHP</span><span class="cv2-chip">MySQL</span><span class="cv2-chip">Zend Framework</span><span class="cv2-chip">PHPUnit</span><span class="cv2-chip">Git</span><span class="cv2-chip">Jira</span><span class="cv2-chip">Stash</span><span class="cv2-chip">Bamboo</span><span class="cv2-chip">GitLab</span>
@@ -243,7 +245,7 @@ lang: de
             <div class="cv2-job-title-sm">PHP-Entwickler <span class="cv2-accent-dot">·</span> netforge</div>
             <div class="cv2-date">01/2011 - 04/2013</div>
           </div>
-          <div class="cv2-iser cv2-desc-sm">Berlin - Online-Dating-Plattform. Als alleiniger Entwickler verantwortlich für den Aufbau eines vollständigen Abrechnungssystems von Grund auf (Symfony/Doctrine), zusätzlich Werbemodule und Mandantenfähigkeit. Arbeitete 100% remote und eigenverantwortlich.</div>
+          <div class="cv2-iser cv2-desc-sm">Berlin - Online-Dating-Plattform. Als alleiniger Entwickler verantwortlich für den Aufbau eines vollständigen Abrechnungssystems von Grund auf (Symfony/Doctrine), zusätzlich Werbemodule und Mandantenfähigkeit. Arbeitete 100 % remote und eigenverantwortlich.</div>
           <div class="cv2-chips cv2-chips-no-top">
             <span class="cv2-chip">PHP</span><span class="cv2-chip">MySQL</span><span class="cv2-chip">SQLite</span><span class="cv2-chip">Symfony Framework</span><span class="cv2-chip">Doctrine</span><span class="cv2-chip">Lime</span><span class="cv2-chip">SVN</span><span class="cv2-chip">Bootstrap</span>
           </div>
@@ -275,27 +277,6 @@ lang: de
 
       </div>
 
-      <div class="cv2-sechead cv2-sechead-edu"><span class="cv2-sectitle">Ausbildung</span><span class="cv2-secline"></span></div>
-      <div class="cv2-col cv2-edu-list">
-
-        <div>
-          <div class="cv2-row">
-            <div class="cv2-edu-title">Postgraduiertenstudium in Informatik</div>
-            <div class="cv2-date cv2-date-sm">10/2008 - 09/2009</div>
-          </div>
-          <div class="cv2-iser cv2-edu-desc">Staatliche Pädagogische Herzen-Universität</div>
-        </div>
-
-        <div>
-          <div class="cv2-row">
-            <div class="cv2-edu-title">Diplom in Informationssystemen und -technologien</div>
-            <div class="cv2-date cv2-date-sm">09/2003 - 07/2008</div>
-          </div>
-          <div class="cv2-iser cv2-edu-desc">Staatliche Universität für Wasserstraßenverkehrswege, Sankt Petersburg · Staatsexamen: Sehr gut</div>
-        </div>
-
-      </div>
-
       <div class="cv2-lang-section">
         <div class="cv2-sechead cv2-sechead-lang"><span class="cv2-sectitle">Sprachen</span><span class="cv2-secline"></span></div>
         <div class="cv2-lang-list">
@@ -305,6 +286,9 @@ lang: de
           <div class="cv2-lang-item"><span class="cv2-edu-title">Spanisch</span><span class="cv2-iser cv2-lang-level">Grundkenntnisse</span></div>
         </div>
       </div>
+
+      <div class="cv2-sechead cv2-sechead-edu"><span class="cv2-sectitle">Ausbildung</span><span class="cv2-secline"></span></div>
+      <div class="cv2-edu-title">Ingenieur (Specialist-Diplom, 5-jähriges Studium) für Informationssysteme und -technologien <span class="cv2-accent-dot">·</span> <span class="cv2-iser cv2-edu-desc">Staatliche Universität für Wasserstraßenverkehrswege, Sankt Petersburg</span></div>
 
     </div>
   </div>
