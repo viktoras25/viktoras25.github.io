@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "bootstrap": "5.3",
-    "bootstrap-icons": "^1.11.3",
+    "bootstrap-icons": "^1.13.2",
     "highlight.js": "^11.12",
     "sass": "^1.105.0",
     "sass-loader": "^17",
